@@ -88,6 +88,7 @@ export const manualContents: Record<string, ManualContent> = {
     ],
     faqVideos: [
       { id: 1, title: 'Q: 受診者の必須入力項目は何ですか？', duration: '2:00' },
+      { id: 2, title: 'Q: 特定健診で住所入力が必須な理由は？', duration: '2:15' },
     ],
     steps: [
       {
