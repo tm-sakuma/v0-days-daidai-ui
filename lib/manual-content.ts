@@ -30,10 +30,10 @@ export const manualContents: Record<string, ManualContent> = {
     title: '予約／受付',
     url: 'manual_appointment',
     videos: [
-      { id: 1, title: '予約カレンダーの見方', duration: '3:00' },
-      { id: 2, title: '新規予約の登録', duration: '2:45' },
-      { id: 3, title: '予約枠と予約の削除', duration: '2:30' },
-      { id: 4, title: '予約のステータス変更', duration: '3:15' },
+      { id: 1, title: 'カレンダー予約と日程変更', duration: '3:00' },
+      { id: 2, title: '当日受付とオプション検査追加', duration: '2:45' },
+      { id: 3, title: '予約画面での表示確認', duration: '2:30' },
+      { id: 4, title: '特定健診の予約と受診券情報の入力', duration: '3:15' },
     ],
     steps: [
       {
@@ -81,8 +81,9 @@ export const manualContents: Record<string, ManualContent> = {
     title: '受診者管理',
     url: 'manual_patient',
     videos: [
-      { id: 1, title: '受診者の登録', duration: '2:30' },
-      { id: 2, title: '受診者の検索', duration: '3:00' },
+      { id: 1, title: '受診者の検索と新規登録', duration: '2:30' },
+      { id: 2, title: '受診者情報の登録手順（特定健診用）', duration: '3:00' },
+      { id: 3, title: '受診者の所属・保険団体設定', duration: '2:45' },
     ],
     steps: [
       {
@@ -129,8 +130,8 @@ export const manualContents: Record<string, ManualContent> = {
     title: '帳票出力',
     url: 'manual_report',
     videos: [
-      { id: 1, title: '帳票の個別印刷', duration: '2:00' },
-      { id: 2, title: '帳票の一括印刷', duration: '3:15' },
+      { id: 1, title: '事前帳票（問診票等）の印刷', duration: '2:00' },
+      { id: 2, title: '報告書発行と印刷', duration: '3:15' },
     ],
     steps: [
       {
@@ -167,10 +168,10 @@ export const manualContents: Record<string, ManualContent> = {
     title: '結果入力',
     url: 'manual_result',
     videos: [
-      { id: 1, title: '結果の入力', duration: '3:30' },
-      { id: 2, title: '判定の入力', duration: '4:00' },
-      { id: 3, title: '入力シートの切り替え', duration: '2:45' },
-      { id: 4, title: '精密検査の入力', duration: '2:30' },
+      { id: 1, title: '検査結果の入力', duration: '3:30' },
+      { id: 2, title: '自動判定と医師承認', duration: '4:00' },
+      { id: 3, title: '検査結果の数値入力', duration: '2:45' },
+      { id: 4, title: '自動判定機能の活用', duration: '2:30' },
     ],
     steps: [
       {
@@ -213,7 +214,8 @@ export const manualContents: Record<string, ManualContent> = {
     title: '問診入力',
     url: 'manual_questionnaire',
     videos: [
-      { id: 1, title: '問診の入力', duration: '2:00' },
+      { id: 1, title: '問診回答の入力', duration: '2:00' },
+      { id: 2, title: '特定健診22項目の問診入力', duration: '2:30' },
     ],
     steps: [
       {
@@ -310,8 +312,8 @@ export const manualContents: Record<string, ManualContent> = {
     title: 'データエクスポート',
     url: 'manual_export',
     videos: [
-      { id: 1, title: 'XMLデータの出力', duration: '2:00' },
-      { id: 2, title: 'CSVデータの出力', duration: '2:30' },
+      { id: 1, title: '特定健診結果CSVのエクスポート', duration: '2:00' },
+      { id: 2, title: '提出用ファイルの作成手順', duration: '2:30' },
     ],
     steps: [
       {
@@ -348,22 +350,22 @@ export const manualContents: Record<string, ManualContent> = {
     title: '健診情報管理',
     url: 'manual_health_info',
     videos: [
-      { id: 1, title: '健診コースの登録', duration: '3:30' },
-      { id: 2, title: '健診コースへの検査の追加', duration: '4:00' },
-      { id: 3, title: '健診コースの複製', duration: '3:15' },
-      { id: 4, title: '検査の登録', duration: '2:45' },
-      { id: 5, title: '検査への検査項目の追加', duration: '3:00' },
-      { id: 6, title: '検査の複製', duration: '2:30' },
-      { id: 7, title: '検査項目の登録', duration: '3:00' },
-      { id: 8, title: '検査項目の複製', duration: '2:30' },
-      { id: 9, title: '検査項目へ基準値の登録', duration: '3:15' },
-      { id: 10, title: '所見選択肢の設定', duration: '2:45' },
-      { id: 11, title: '検査項目の並び替え', duration: '2:00' },
-      { id: 12, title: '入力シートの設定', duration: '3:00' },
-      { id: 13, title: '二次検査項目の設定', duration: '2:45' },
-      { id: 14, title: '判定項目の設定', duration: '3:00' },
-      { id: 15, title: '判定区分の設定', duration: '2:30' },
-      { id: 16, title: '複合判定の設定', duration: '3:15' },
+      { id: 1, title: '団体情報の登録', duration: '3:30' },
+      { id: 2, title: '新規コースの枠組み作成', duration: '4:00' },
+      { id: 3, title: '検査基準管理とコース検索', duration: '3:15' },
+      { id: 4, title: 'コース内容の複製（参照複製）', duration: '2:45' },
+      { id: 5, title: 'コース名称と出力名の設定', duration: '3:00' },
+      { id: 6, title: '検査項目のグループ構成設定', duration: '2:30' },
+      { id: 7, title: '標準検査とオプションの振分け', duration: '3:00' },
+      { id: 8, title: '新コースの確定と有効化', duration: '2:30' },
+      { id: 9, title: '団体情報の新規登録', duration: '3:15' },
+      { id: 10, title: '特定健診の代行機関選択', duration: '2:45' },
+      { id: 11, title: '保険団体と所属団体の自動連携', duration: '2:00' },
+      { id: 12, title: '契約情報の基本設定', duration: '3:00' },
+      { id: 13, title: '契約コースの紐付け', duration: '2:45' },
+      { id: 14, title: '基本単価の入力', duration: '3:00' },
+      { id: 15, title: '検査グループごとの詳細料金設定', duration: '2:30' },
+      { id: 16, title: '特健種別の詳細設定', duration: '3:15' },
     ],
     steps: [
       {
@@ -398,7 +400,7 @@ export const manualContents: Record<string, ManualContent> = {
     title: 'マスター管理',
     url: 'manual_master',
     videos: [
-      { id: 1, title: '団体の登録', duration: '2:30' },
+      { id: 1, title: 'アカウント権限の設定', duration: '2:30' },
     ],
     steps: [
       {
@@ -432,7 +434,7 @@ export const manualContents: Record<string, ManualContent> = {
     title: 'システム設定',
     url: 'manual_system',
     videos: [
-      { id: 1, title: 'ユーザーの登録', duration: '2:00' },
+      { id: 1, title: 'システム起動とログイン手順', duration: '2:00' },
     ],
     steps: [
       {
@@ -456,7 +458,7 @@ export const manualContents: Record<string, ManualContent> = {
       {
         title: 'バック���ップを設定',
         items: [
-          '自動バックアップのスケジュール設定',
+          '自動バックアップのスケジ���ール設定',
           '保存先の指定',
           '手動バックアップの実行',
         ],
