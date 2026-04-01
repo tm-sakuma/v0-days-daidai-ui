@@ -1,0 +1,38 @@
+'use client'
+
+import { Search } from 'lucide-react'
+
+interface ManualHeaderProps {
+  searchQuery: string
+  onSearchChange: (query: string) => void
+}
+
+export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps) {
+  return (
+    <header className="flex-shrink-0 border-b border-[#eaeaea] bg-white">
+      <div className="h-16 flex items-center px-6">
+        {/* Logo */}
+        <div className="mr-8 flex-shrink-0">
+          <h1 className="text-sm font-bold text-[#1a1a1a] tracking-tight">
+            DAYS Daidai
+          </h1>
+          <p className="text-[10px] text-[#888888] mt-0.5">マニュアルセンター</p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="flex-1 max-w-md">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#b0b0b0]" />
+            <input
+              type="text"
+              placeholder="マニュアル全体から検索..."
+              value={searchQuery}
+              onChange={(e) => onSearchChange(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-[#f7f7f7] border border-[#e8e8e8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22d3ee]/30 focus:border-[#22d3ee] text-sm text-[#1a1a1a] placeholder:text-[#aaaaaa] transition-all"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}
