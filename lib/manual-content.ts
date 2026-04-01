@@ -86,6 +86,9 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 2, title: '受診者情報の登録手順（特定健診用）', duration: '3:00' },
       { id: 3, title: '受診者の所属・保険団体設定', duration: '2:45' },
     ],
+    faqVideos: [
+      { id: 1, title: 'Q: 受診者の必須入力項目は何ですか？', duration: '2:00' },
+    ],
     steps: [
       {
         title: '受診者を検索する',

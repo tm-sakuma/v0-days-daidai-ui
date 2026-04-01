@@ -17,7 +17,6 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
   const [completed, setCompleted] = useState<Set<number>>(new Set())
   const selectedVideo = allVideos[selectedIndex] || allVideos[0]
 
-  // Reset completed when videos change
   useEffect(() => {
     setCompleted(new Set())
   }, [videos, faqVideos])
@@ -35,22 +34,20 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
     })
   }
 
-  // Extract YouTube video ID from URL
   const getYouTubeId = (url: string): string | null => {
     const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?\s]+)/)
     return match ? match[1] : null
   }
 
-  const youtubeId = selectedVideo.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
+  const youtubeId = selectedVideo?.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      {/* Video Player Area - Larger Size */}
+      {/* Video Player Area */}
       <div className="flex-shrink-0 p-4 pb-3">
         <div className="w-full rounded-lg overflow-hidden bg-[#1a1a1a] shadow-sm">
           <div className="relative w-full pb-[56.25%]">
             {youtubeId ? (
-              /* YouTube Embed */
               <iframe
                 className="absolute inset-0 w-full h-full"
                 src={`https://www.youtube.com/embed/${youtubeId}?rel=0`}
@@ -59,7 +56,6 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                 allowFullScreen
               />
             ) : (
-              /* Placeholder for non-YouTube videos */
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a]">
                 <div className="flex flex-col items-center gap-4">
                   <div className="h-14 w-14 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition-colors cursor-pointer">
@@ -67,9 +63,9 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                   </div>
                   <div className="text-center px-4">
                     <p className="text-white text-sm font-medium">
-                      Step {selectedIndex + 1}: {selectedVideo.title}
+                      Step {selectedIndex + 1}: {selectedVideo?.title}
                     </p>
-                    <p className="text-white/50 text-xs mt-1">{selectedVideo.duration}</p>
+                    <p className="text-white/50 text-xs mt-1">{selectedVideo?.duration}</p>
                   </div>
                 </div>
               </div>
@@ -95,7 +91,6 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                 }`}
                 onClick={() => onSelectVideo(index)}
               >
-                {/* Step Number */}
                 <span className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${
                   isSelected
                     ? 'bg-[#22d3ee] text-white'
@@ -105,8 +100,6 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                 }`}>
                   {index + 1}
                 </span>
-
-                {/* Video Info */}
                 <div className="flex-1 min-w-0">
                   <p className={`text-sm leading-tight ${
                     isSelected ? 'font-medium text-[#0e7490]' : isDone ? 'text-[#888888]' : 'text-[#333333]'
@@ -115,15 +108,10 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                   </p>
                   <p className="text-[10px] text-[#aaaaaa] mt-0.5">{video.duration}</p>
                 </div>
-
-                {/* Completion Toggle */}
                 <div
                   role="button"
                   tabIndex={0}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    toggleCompleted(index, e)
-                  }}
+                  onClick={(e) => { e.stopPropagation(); toggleCompleted(index, e) }}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault()
@@ -166,7 +154,6 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                     }`}
                     onClick={() => onSelectVideo(actualIndex)}
                   >
-                    {/* Step Number */}
                     <span className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${
                       isSelected
                         ? 'bg-[#fbbf24] text-white'
@@ -176,8 +163,6 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                     }`}>
                       {index + 1}
                     </span>
-
-                    {/* Video Info */}
                     <div className="flex-1 min-w-0">
                       <p className={`text-sm leading-tight ${
                         isSelected ? 'font-medium text-[#92400e]' : isDone ? 'text-[#888888]' : 'text-[#333333]'
@@ -186,15 +171,10 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                       </p>
                       <p className="text-[10px] text-[#aaaaaa] mt-0.5">{video.duration}</p>
                     </div>
-
-                    {/* Completion Toggle */}
                     <div
                       role="button"
                       tabIndex={0}
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        toggleCompleted(actualIndex, e)
-                      }}
+                      onClick={(e) => { e.stopPropagation(); toggleCompleted(actualIndex, e) }}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
                           e.preventDefault()
