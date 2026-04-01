@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Play, Check } from 'lucide-react'
 import type { VideoItem } from '@/lib/manual-content'
 
@@ -8,20 +8,19 @@ interface VideoSectionProps {
   selectedIndex: number
   onSelectVideo: (index: number) => void
   videos: VideoItem[]
+  faqVideos?: VideoItem[]
 }
 
-export function VideoSection({ selectedIndex, onSelectVideo, videos }: VideoSectionProps) {
+export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos = [] }: VideoSectionProps) {
+  const allVideos = useMemo(() => [...videos, ...faqVideos], [videos, faqVideos])
+  const faqStartIndex = videos.length
   const [completed, setCompleted] = useState<Set<number>>(new Set())
-  const prevVideosRef = useRef<VideoItem[]>(videos)
-  const selectedVideo = videos[selectedIndex] || videos[0]
+  const selectedVideo = allVideos[selectedIndex] || allVideos[0]
 
-  // Reset selected index when videos change
+  // Reset completed when videos change
   useEffect(() => {
-    if (prevVideosRef.current !== videos) {
-      prevVideosRef.current = videos
-      setCompleted(new Set())
-    }
-  }, [videos])
+    setCompleted(new Set())
+  }, [videos, faqVideos])
 
   function toggleCompleted(index: number, e: React.MouseEvent) {
     e.stopPropagation()
@@ -147,6 +146,79 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos }: VideoSect
             )
           })}
         </div>
+
+        {/* FAQ Video List */}
+        {faqVideos.length > 0 && (
+          <>
+            <p className="text-[10px] font-semibold text-[#999999] mb-2.5 mt-4 uppercase tracking-wider">FAQ動画</p>
+            <div className="space-y-1">
+              {faqVideos.map((video, index) => {
+                const actualIndex = faqStartIndex + index
+                const isSelected = selectedIndex === actualIndex
+                const isDone = completed.has(actualIndex)
+                return (
+                  <div
+                    key={`faq-${video.id}`}
+                    className={`group w-full px-3 py-2.5 rounded-md border transition-all flex items-center gap-3 cursor-pointer ${
+                      isSelected
+                        ? 'border-[#fbbf24] bg-[#fefce8]'
+                        : 'border-[#fef3c7] bg-[#fffbeb] hover:border-[#fcd34d]'
+                    }`}
+                    onClick={() => onSelectVideo(actualIndex)}
+                  >
+                    {/* Step Number */}
+                    <span className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                      isSelected
+                        ? 'bg-[#fbbf24] text-white'
+                        : isDone
+                        ? 'bg-[#fbbf24]/20 text-[#b45309]'
+                        : 'bg-[#fef3c7] text-[#92400e]'
+                    }`}>
+                      {index + 1}
+                    </span>
+
+                    {/* Video Info */}
+                    <div className="flex-1 min-w-0">
+                      <p className={`text-sm leading-tight ${
+                        isSelected ? 'font-medium text-[#92400e]' : isDone ? 'text-[#888888]' : 'text-[#78350f]'
+                      }`}>
+                        {video.title}
+                      </p>
+                      <p className="text-[10px] text-[#d97706] mt-0.5">{video.duration}</p>
+                    </div>
+
+                    {/* Completion Toggle */}
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        toggleCompleted(actualIndex, e)
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          toggleCompleted(actualIndex, e as unknown as React.MouseEvent)
+                        }
+                      }}
+                      className="flex-shrink-0 cursor-pointer"
+                      title={isDone ? '未完了にする' : '完了にする'}
+                    >
+                      {isDone ? (
+                        <div className="w-5 h-5 rounded-full bg-[#fbbf24] flex items-center justify-center">
+                          <Check className="h-3 w-3 text-white" strokeWidth={3} />
+                        </div>
+                      ) : (
+                        <div className="w-5 h-5 rounded-full border-2 border-[#fcd34d] group-hover:border-[#fbbf24] transition-colors" />
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </>
+        )}
       </div>
     </div>
   )

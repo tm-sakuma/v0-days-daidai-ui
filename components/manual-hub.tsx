@@ -61,7 +61,7 @@ export function ManualHub({ onClose }: ManualHubProps) {
               {/* Section Title with Current Content Name */}
               <div className="flex-shrink-0 flex items-center justify-between px-4 py-3 border-b border-[#eaeaea] bg-white">
                 <h2 className="text-sm font-semibold text-[#444444]">{currentContent.title}</h2>
-                <span className="text-[10px] text-[#999999]">{currentContent.videos.length} 本の動画</span>
+                <span className="text-[10px] text-[#999999]">{currentContent.videos.length + (currentContent.faqVideos?.length || 0)} 本の動画</span>
               </div>
 
               {/* Video Content */}
@@ -69,6 +69,7 @@ export function ManualHub({ onClose }: ManualHubProps) {
                 selectedIndex={selectedVideoIndex}
                 onSelectVideo={setSelectedVideoIndex}
                 videos={currentContent.videos}
+                faqVideos={currentContent.faqVideos}
               />
             </div>
 

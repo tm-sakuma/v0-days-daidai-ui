@@ -21,6 +21,7 @@ export interface ManualContent {
   title: string
   url?: string
   videos: VideoItem[]
+  faqVideos?: VideoItem[]
   steps: StepItem[]
 }
 
@@ -366,6 +367,15 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 14, title: '基本単価の入力', duration: '3:00' },
       { id: 15, title: '検査グループごとの詳細料金設定', duration: '2:30' },
       { id: 16, title: '特健種別の詳細設定', duration: '3:15' },
+    ],
+    faqVideos: [
+      { id: 1, title: 'Q: 「個人向け」と「団体向け」どちらを選べばいい？', duration: '2:00' },
+      { id: 2, title: 'Q: コース設定を一番早く終わらせる方法は？', duration: '2:30' },
+      { id: 3, title: 'Q: 「標準検査」と「オプション」の違いはどこで決まる？', duration: '2:15' },
+      { id: 4, title: 'Q: 作ったコースが予約画面に出てこない！', duration: '1:45' },
+      { id: 5, title: 'Q: 保険者番号が6桁しかない場合は？', duration: '1:30' },
+      { id: 6, title: 'Q: 契約情報の期間設定を早く終わらせるには？', duration: '2:00' },
+      { id: 7, title: 'Q: 項目ごとの料金を細かく設定するには？', duration: '2:30' },
     ],
     steps: [
       {
