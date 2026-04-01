@@ -446,6 +446,9 @@ export const manualContents: Record<string, ManualContent> = {
     videos: [
       { id: 1, title: 'システム起動とログイン手順', duration: '2:00' },
     ],
+    faqVideos: [
+      { id: 1, title: 'Q: 医師と一般スタッフでアカウントを分けるには？', duration: '2:30' },
+    ],
     steps: [
       {
         title: 'ユーザーを管理',
