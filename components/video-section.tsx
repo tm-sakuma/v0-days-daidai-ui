@@ -162,7 +162,7 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                     className={`group w-full px-3 py-2.5 rounded-md border transition-all flex items-center gap-3 cursor-pointer ${
                       isSelected
                         ? 'border-[#fbbf24] bg-[#fefce8]'
-                        : 'border-[#fef3c7] bg-[#fffbeb] hover:border-[#fcd34d]'
+                        : 'border-[#eaeaea] bg-white hover:border-[#d0d0d0]'
                     }`}
                     onClick={() => onSelectVideo(actualIndex)}
                   >
@@ -172,7 +172,7 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                         ? 'bg-[#fbbf24] text-white'
                         : isDone
                         ? 'bg-[#fbbf24]/20 text-[#b45309]'
-                        : 'bg-[#fef3c7] text-[#92400e]'
+                        : 'bg-[#f0f0f0] text-[#666666]'
                     }`}>
                       {index + 1}
                     </span>
@@ -180,11 +180,11 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                     {/* Video Info */}
                     <div className="flex-1 min-w-0">
                       <p className={`text-sm leading-tight ${
-                        isSelected ? 'font-medium text-[#92400e]' : isDone ? 'text-[#888888]' : 'text-[#78350f]'
+                        isSelected ? 'font-medium text-[#92400e]' : isDone ? 'text-[#888888]' : 'text-[#333333]'
                       }`}>
                         {video.title}
                       </p>
-                      <p className="text-[10px] text-[#d97706] mt-0.5">{video.duration}</p>
+                      <p className="text-[10px] text-[#aaaaaa] mt-0.5">{video.duration}</p>
                     </div>
 
                     {/* Completion Toggle */}
@@ -210,7 +210,7 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
                           <Check className="h-3 w-3 text-white" strokeWidth={3} />
                         </div>
                       ) : (
-                        <div className="w-5 h-5 rounded-full border-2 border-[#fcd34d] group-hover:border-[#fbbf24] transition-colors" />
+                        <div className="w-5 h-5 rounded-full border-2 border-[#d8d8d8] group-hover:border-[#fbbf24] transition-colors" />
                       )}
                     </div>
                   </div>
