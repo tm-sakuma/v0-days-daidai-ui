@@ -36,6 +36,9 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 3, title: '予約画面での表示確認', duration: '2:30' },
       { id: 4, title: '特定健診の予約と受診券情報の入力', duration: '3:15' },
     ],
+    faqVideos: [
+      { id: 1, title: 'Q: 受診券番号は何桁入力すればいい？', duration: '2:00' },
+    ],
     steps: [
       {
         title: '予約画面を開く',
@@ -423,7 +426,7 @@ export const manualContents: Record<string, ManualContent> = {
       {
         title: '施設マスターを管理',
         items: [
-          '施設情報を登録・編集',
+          '施設情報を登録・編���',
           '所在地・連絡先を設定',
           '帳票に表示する情報を設定',
         ],
