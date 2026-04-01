@@ -177,6 +177,9 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 3, title: '検査結果の数値入力', duration: '2:45' },
       { id: 4, title: '自動判定機能の活用', duration: '2:30' },
     ],
+    faqVideos: [
+      { id: 1, title: 'Q: 医師が「確定」ボタンを押す理由は？', duration: '2:00' },
+    ],
     steps: [
       {
         title: '結果入力画面を開く',
@@ -223,7 +226,7 @@ export const manualContents: Record<string, ManualContent> = {
     ],
     steps: [
       {
-        title: '問診入力画面を開く',
+        title: '問診入力��面を開く',
         items: [
           '対象の受診者を選択',
           '問診入力タブを開く',
@@ -427,7 +430,7 @@ export const manualContents: Record<string, ManualContent> = {
       {
         title: '担当医マスター���管理',
         items: [
-          '担当医情報を登録',
+          '担当医情���を登録',
           '診療科・専門分野を設定',
           '���子署名の設定',
         ],
