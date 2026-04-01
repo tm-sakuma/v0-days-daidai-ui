@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { Play, Check } from 'lucide-react'
 import type { VideoItem } from '@/lib/manual-content'
 
@@ -16,10 +16,19 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
   const faqStartIndex = videos.length
   const [completed, setCompleted] = useState<Set<number>>(new Set())
   const selectedVideo = allVideos[selectedIndex] || allVideos[0]
-
+  
+  // Track video titles to detect actual content changes
+  const videosKey = videos.map(v => v.title).join(',')
+  const faqKey = faqVideos.map(v => v.title).join(',')
+  const prevKeyRef = useRef(`${videosKey}|${faqKey}`)
+  
   useEffect(() => {
-    setCompleted(new Set())
-  }, [videos, faqVideos])
+    const currentKey = `${videosKey}|${faqKey}`
+    if (prevKeyRef.current !== currentKey) {
+      prevKeyRef.current = currentKey
+      setCompleted(new Set())
+    }
+  }, [videosKey, faqKey])
 
   function toggleCompleted(index: number, e: React.MouseEvent) {
     e.stopPropagation()

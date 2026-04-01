@@ -326,6 +326,9 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 1, title: '特定健診結果CSVのエクスポート', duration: '2:00' },
       { id: 2, title: '提出用ファイルの作成手順', duration: '2:30' },
     ],
+    faqVideos: [
+      { id: 1, title: 'Q: 出力したデータはどこに保存される？', duration: '1:45' },
+    ],
     steps: [
       {
         title: 'エクスポート対象を選択',
