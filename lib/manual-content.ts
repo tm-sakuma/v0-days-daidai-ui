@@ -19,7 +19,9 @@ export interface StepItem {
 
 export interface ManualContent {
   title: string
+  url?: string
   videos: VideoItem[]
+  faqVideos?: VideoItem[]
   steps: StepItem[]
 }
 
@@ -27,12 +29,15 @@ export const manualContents: Record<string, ManualContent> = {
   // FRONT OFFICE
   appointment: {
     title: '予約／受付',
+    url: 'manual_appointment',
     videos: [
-      { id: 1, title: '予約画面の基本操作', duration: '3:00' },
-      { id: 2, title: '新規予約の登録', duration: '2:45' },
-      { id: 3, title: '予約の変更・キャンセル', duration: '2:30' },
-      { id: 4, title: '受付処理の流れ', duration: '3:15' },
-      { id: 5, title: '予約一覧の検索・絞り込み', duration: '2:00' },
+      { id: 1, title: 'カレンダー予約と日程変更', duration: '3:00' },
+      { id: 2, title: '当日受付とオプション検査追加', duration: '2:45' },
+      { id: 3, title: '予約画面での表示確認', duration: '2:30' },
+      { id: 4, title: '特定健診の予約と受診券情報の入力', duration: '3:15' },
+    ],
+    faqVideos: [
+      { id: 1, title: 'Q: 受診券番号は何桁入力すればいい？', duration: '2:00' },
     ],
     steps: [
       {
@@ -78,12 +83,15 @@ export const manualContents: Record<string, ManualContent> = {
   },
   patient: {
     title: '受診者管理',
+    url: 'manual_patient',
     videos: [
-      { id: 1, title: '受診者検索の方法', duration: '2:30' },
-      { id: 2, title: '新規受診者の登録', duration: '3:00' },
-      { id: 3, title: '受診者情報の編集', duration: '2:15' },
-      { id: 4, title: '受診履歴の確認', duration: '2:45' },
-      { id: 5, title: '重複登録のマージ', duration: '3:30' },
+      { id: 1, title: '受診者の検索と新規登録', duration: '2:30' },
+      { id: 2, title: '受診者情報の登録手順（特定健診用）', duration: '3:00' },
+      { id: 3, title: '受診者の所属・保険団体設定', duration: '2:45' },
+    ],
+    faqVideos: [
+      { id: 1, title: 'Q: 受診者の必須入力項目は何ですか？', duration: '2:00' },
+      { id: 2, title: 'Q: 特定健診で住所入力が必須な理由は？', duration: '2:15' },
     ],
     steps: [
       {
@@ -128,11 +136,10 @@ export const manualContents: Record<string, ManualContent> = {
   // BACK OFFICE
   report: {
     title: '帳票出力',
+    url: 'manual_report',
     videos: [
-      { id: 1, title: '帳票出力の基本', duration: '2:00' },
-      { id: 2, title: '結果報告書の出力', duration: '3:15' },
-      { id: 3, title: '請求書・領収書の発行', duration: '2:30' },
-      { id: 4, title: '一括出力の方法', duration: '3:00' },
+      { id: 1, title: '事前帳票（問診票等）の印刷', duration: '2:00' },
+      { id: 2, title: '報告書発行と印刷', duration: '3:15' },
     ],
     steps: [
       {
@@ -167,12 +174,15 @@ export const manualContents: Record<string, ManualContent> = {
   // HEALTH EXAMINATION
   result: {
     title: '結果入力',
+    url: 'manual_result',
     videos: [
-      { id: 1, title: '結果入力画面の操作', duration: '3:30' },
-      { id: 2, title: '検査項目ごとの入力', duration: '4:00' },
-      { id: 3, title: '判定の入力', duration: '2:45' },
-      { id: 4, title: '所見コメントの入力', duration: '2:30' },
-      { id: 5, title: '入力データの確定', duration: '2:00' },
+      { id: 1, title: '検査結果の入力', duration: '3:30' },
+      { id: 2, title: '自動判定と医師承認', duration: '4:00' },
+      { id: 3, title: '検査結果の数値入力', duration: '2:45' },
+      { id: 4, title: '自動判定機能の活用', duration: '2:30' },
+    ],
+    faqVideos: [
+      { id: 1, title: 'Q: 医師が「確定」ボタンを押す理由は？', duration: '2:00' },
     ],
     steps: [
       {
@@ -213,15 +223,14 @@ export const manualContents: Record<string, ManualContent> = {
   },
   questionnaire: {
     title: '問診入力',
+    url: 'manual_questionnaire',
     videos: [
-      { id: 1, title: '問診票の構成', duration: '2:00' },
-      { id: 2, title: '問診データの入力', duration: '3:15' },
-      { id: 3, title: 'Web問診との連携', duration: '2:45' },
-      { id: 4, title: '問診履歴の確認', duration: '2:00' },
+      { id: 1, title: '問診回答の入力', duration: '2:00' },
+      { id: 2, title: '特定健診22項目の問診入力', duration: '2:30' },
     ],
     steps: [
       {
-        title: '問診入力画面を開く',
+        title: '問診入力��面を開く',
         items: [
           '対象の受診者を選択',
           '問診入力タブを開く',
@@ -251,6 +260,7 @@ export const manualContents: Record<string, ManualContent> = {
   // OPTIONS
   import: {
     title: 'データインポート',
+    url: 'manual_import',
     videos: [
       { id: 1, title: 'CSVファイルの準備', duration: '2:30', youtubeUrl: 'https://youtu.be/p6bAE6YuQNU' },
       { id: 2, title: 'データフォーマットの確認', duration: '3:15' },
@@ -311,11 +321,13 @@ export const manualContents: Record<string, ManualContent> = {
   },
   export: {
     title: 'データエクスポート',
+    url: 'manual_export',
     videos: [
-      { id: 1, title: 'エクスポート機能の概要', duration: '2:00' },
-      { id: 2, title: 'エクスポート対象の選択', duration: '2:30' },
-      { id: 3, title: '出力形式の設定', duration: '2:15' },
-      { id: 4, title: 'エクスポートの実行', duration: '2:45' },
+      { id: 1, title: '特定健診結果CSVのエクスポート', duration: '2:00' },
+      { id: 2, title: '提出用ファイルの作成手順', duration: '2:30' },
+    ],
+    faqVideos: [
+      { id: 1, title: 'Q: 出力したデータはどこに保存される？', duration: '1:45' },
     ],
     steps: [
       {
@@ -350,11 +362,33 @@ export const manualContents: Record<string, ManualContent> = {
   // ADMINISTRATION
   'health-info': {
     title: '健診情報管理',
+    url: 'manual_health_info',
     videos: [
-      { id: 1, title: '健診コースの設定', duration: '3:30' },
-      { id: 2, title: '検査項目の管理', duration: '4:00' },
-      { id: 3, title: '基準値の設定', duration: '3:15' },
-      { id: 4, title: '判定区分の設定', duration: '2:45' },
+      { id: 1, title: '団体情報の登録', duration: '3:30' },
+      { id: 2, title: '新規コースの枠組み作成', duration: '4:00' },
+      { id: 3, title: '検査基準管理とコース検索', duration: '3:15' },
+      { id: 4, title: 'コース内容の複製（参照複製）', duration: '2:45' },
+      { id: 5, title: 'コース名称と出力名の設定', duration: '3:00' },
+      { id: 6, title: '検査項目のグループ構成設定', duration: '2:30' },
+      { id: 7, title: '標準検査とオプションの振分け', duration: '3:00' },
+      { id: 8, title: '新コースの確定と有効化', duration: '2:30' },
+      { id: 9, title: '団体情報の新規登録', duration: '3:15' },
+      { id: 10, title: '特定健診の代行機関選択', duration: '2:45' },
+      { id: 11, title: '保険団体と所属団体の自動連携', duration: '2:00' },
+      { id: 12, title: '契約情報の基本設定', duration: '3:00' },
+      { id: 13, title: '契約コースの紐付け', duration: '2:45' },
+      { id: 14, title: '基本単価の入力', duration: '3:00' },
+      { id: 15, title: '検査グループごとの詳細料金設定', duration: '2:30' },
+      { id: 16, title: '特健種別の詳細設定', duration: '3:15' },
+    ],
+    faqVideos: [
+      { id: 1, title: 'Q: 「個人向け」と「団体向け」どちらを選べばいい？', duration: '2:00' },
+      { id: 2, title: 'Q: コース設定を一番早く終わらせる方法は？', duration: '2:30' },
+      { id: 3, title: 'Q: 「標準検査」と「オプション」の違いはどこで決まる？', duration: '2:15' },
+      { id: 4, title: 'Q: 作ったコースが予約画面に出てこない！', duration: '1:45' },
+      { id: 5, title: 'Q: 保険者番号が6桁しかない場合は？', duration: '1:30' },
+      { id: 6, title: 'Q: 契約情報の期間設定を早く終わらせるには？', duration: '2:00' },
+      { id: 7, title: 'Q: 項目ごとの料金を細かく設定するには？', duration: '2:30' },
     ],
     steps: [
       {
@@ -387,25 +421,23 @@ export const manualContents: Record<string, ManualContent> = {
   },
   master: {
     title: 'マスター管理',
+    url: 'manual_master',
     videos: [
-      { id: 1, title: 'マスター管理の概要', duration: '2:30' },
-      { id: 2, title: '施設マスターの設定', duration: '3:00' },
-      { id: 3, title: '担当医マスターの設定', duration: '2:45' },
-      { id: 4, title: 'コードマスターの設定', duration: '3:15' },
+      { id: 1, title: 'アカウント権限の設定', duration: '2:30' },
     ],
     steps: [
       {
         title: '施設マスターを管理',
         items: [
-          '施設情報を登録・編集',
+          '施設情報を登録・編���',
           '所在地・連絡先を設定',
           '帳票に表示する情報を設定',
         ],
       },
       {
-        title: '担当医マスターを管理',
+        title: '担当医マスター���管理',
         items: [
-          '担当医情報を登録',
+          '担当医情���を登録',
           '診療科・専門分野を設定',
           '���子署名の設定',
         ],
@@ -423,11 +455,12 @@ export const manualContents: Record<string, ManualContent> = {
   },
   system: {
     title: 'システム設定',
+    url: 'manual_system',
     videos: [
-      { id: 1, title: 'システム設定の概要', duration: '2:00' },
-      { id: 2, title: 'ユーザー管理', duration: '3:30' },
-      { id: 3, title: '権限設定', duration: '3:00' },
-      { id: 4, title: 'バックアップ設定', duration: '2:45' },
+      { id: 1, title: 'システム起動とログイン手順', duration: '2:00' },
+    ],
+    faqVideos: [
+      { id: 1, title: 'Q: 医師と一般スタッフでアカウントを分けるには？', duration: '2:30' },
     ],
     steps: [
       {
@@ -451,7 +484,7 @@ export const manualContents: Record<string, ManualContent> = {
       {
         title: 'バック���ップを設定',
         items: [
-          '自動バックアップのスケジュール設定',
+          '自動バックアップのスケジ���ール設定',
           '保存先の指定',
           '手動バックアップの実行',
         ],
