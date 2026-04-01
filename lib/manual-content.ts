@@ -19,6 +19,7 @@ export interface StepItem {
 
 export interface ManualContent {
   title: string
+  url?: string
   videos: VideoItem[]
   steps: StepItem[]
 }
@@ -27,6 +28,7 @@ export const manualContents: Record<string, ManualContent> = {
   // FRONT OFFICE
   appointment: {
     title: '予約／受付',
+    url: '',
     videos: [
       { id: 1, title: '予約画面の基本操作', duration: '3:00' },
       { id: 2, title: '新規予約の登録', duration: '2:45' },
@@ -78,6 +80,7 @@ export const manualContents: Record<string, ManualContent> = {
   },
   patient: {
     title: '受診者管理',
+    url: '',
     videos: [
       { id: 1, title: '受診者検索の方法', duration: '2:30' },
       { id: 2, title: '新規受診者の登録', duration: '3:00' },
@@ -128,6 +131,7 @@ export const manualContents: Record<string, ManualContent> = {
   // BACK OFFICE
   report: {
     title: '帳票出力',
+    url: '',
     videos: [
       { id: 1, title: '帳票出力の基本', duration: '2:00' },
       { id: 2, title: '結果報告書の出力', duration: '3:15' },
@@ -167,6 +171,7 @@ export const manualContents: Record<string, ManualContent> = {
   // HEALTH EXAMINATION
   result: {
     title: '結果入力',
+    url: '',
     videos: [
       { id: 1, title: '結果入力画面の操作', duration: '3:30' },
       { id: 2, title: '検査項目ごとの入力', duration: '4:00' },
@@ -213,6 +218,7 @@ export const manualContents: Record<string, ManualContent> = {
   },
   questionnaire: {
     title: '問診入力',
+    url: '',
     videos: [
       { id: 1, title: '問診票の構成', duration: '2:00' },
       { id: 2, title: '問診データの入力', duration: '3:15' },
@@ -251,6 +257,7 @@ export const manualContents: Record<string, ManualContent> = {
   // OPTIONS
   import: {
     title: 'データインポート',
+    url: '',
     videos: [
       { id: 1, title: 'CSVファイルの準備', duration: '2:30', youtubeUrl: 'https://youtu.be/p6bAE6YuQNU' },
       { id: 2, title: 'データフォーマットの確認', duration: '3:15' },
@@ -311,6 +318,7 @@ export const manualContents: Record<string, ManualContent> = {
   },
   export: {
     title: 'データエクスポート',
+    url: '',
     videos: [
       { id: 1, title: 'エクスポート機能の概要', duration: '2:00' },
       { id: 2, title: 'エクスポート対象の選択', duration: '2:30' },
@@ -350,6 +358,7 @@ export const manualContents: Record<string, ManualContent> = {
   // ADMINISTRATION
   'health-info': {
     title: '健診情報管理',
+    url: '',
     videos: [
       { id: 1, title: '健診コースの設定', duration: '3:30' },
       { id: 2, title: '検査項目の管理', duration: '4:00' },
@@ -403,7 +412,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
       },
       {
-        title: '担当医マスターを管理',
+        title: '担当医マスター���管理',
         items: [
           '担当医情報を登録',
           '診療科・専門分野を設定',
