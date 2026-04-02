@@ -1,8 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { ManualHub } from '@/components/manual-hub'
 import { HelpCircle } from 'lucide-react'
+
+// Loading fallback for Suspense
+function ManualHubLoading() {
+  return (
+    <div className="flex items-center justify-center h-screen bg-white">
+      <div className="animate-pulse text-[#666666]">読み込み中...</div>
+    </div>
+  )
+}
 
 // DAYS Daidai Manual Center - Updated
 export default function Home() {
@@ -51,7 +60,9 @@ export default function Home() {
               : 'opacity-100 scale-100 translate-y-0'
           }`}
         >
-          <ManualHub onClose={handleClose} />
+          <Suspense fallback={<ManualHubLoading />}>
+            <ManualHub onClose={handleClose} />
+          </Suspense>
         </div>
       )}
     </main>
