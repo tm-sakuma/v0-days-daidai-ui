@@ -261,13 +261,7 @@ export const manualContents: Record<string, ManualContent> = {
   import: {
     title: 'データインポート',
     url: 'manual_import',
-    videos: [
-      { id: 1, title: 'CSVファイルの準備', duration: '2:30', youtubeUrl: 'https://youtu.be/p6bAE6YuQNU' },
-      { id: 2, title: 'データフォーマットの確認', duration: '3:15' },
-      { id: 3, title: 'インポートプロセスの実行', duration: '2:45' },
-      { id: 4, title: 'データの検証', duration: '3:00' },
-      { id: 5, title: 'トラブルシューティング', duration: '4:20' },
-    ],
+    videos: [],
     steps: [
       {
         title: 'CSVファイルの準備',
