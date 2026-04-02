@@ -371,7 +371,7 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 5, title: 'コース名称と出力名の設定', duration: '3:00' },
       { id: 6, title: '検査項目のグループ構成設定', duration: '2:30' },
       { id: 7, title: '標準検査とオプションの振分け', duration: '3:00' },
-      { id: 8, title: '新コースの確定と有効化', duration: '2:30' },
+      { id: 8, title: '新コースの確定と有効���', duration: '2:30' },
       { id: 9, title: '団体情報の新規登録', duration: '3:15' },
       { id: 10, title: '特定健診の代行機関選択', duration: '2:45' },
       { id: 11, title: '保険団体と所属団体の自動連携', duration: '2:00' },
@@ -497,4 +497,29 @@ export const manualContents: Record<string, ManualContent> = {
 // Get content by menu item ID
 export function getManualContent(itemId: string): ManualContent {
   return manualContents[itemId] || manualContents.import
+}
+
+// Item to Category mapping for URL-based navigation (deep linking)
+const itemCategoryMap: Record<string, string> = {
+  home: 'HOME',
+  appointment: 'FRONT_OFFICE',
+  patient: 'FRONT_OFFICE',
+  report: 'BACK_OFFICE',
+  result: 'HEALTH_EXAMINATION',
+  questionnaire: 'HEALTH_EXAMINATION',
+  import: 'OPTIONS',
+  export: 'OPTIONS',
+  'health-info': 'ADMINISTRATION',
+  master: 'ADMINISTRATION',
+  system: 'ADMINISTRATION',
+}
+
+// Get category by item ID for deep linking
+export function getItemCategory(itemId: string): string {
+  return itemCategoryMap[itemId] || 'HOME'
+}
+
+// Get all valid page IDs for validation
+export function getValidPageIds(): string[] {
+  return Object.keys(manualContents)
 }

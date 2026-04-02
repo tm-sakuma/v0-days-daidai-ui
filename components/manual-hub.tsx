@@ -1,24 +1,48 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { X } from 'lucide-react'
 import { ManualHeader } from './manual-header'
 import { SidebarMenu } from './sidebar-menu'
 import { VideoSection } from './video-section'
 import { DocumentationSection } from './documentation-section'
 import { HomeDashboard } from './home-dashboard'
-import { getManualContent } from '@/lib/manual-content'
+import { getManualContent, getItemCategory } from '@/lib/manual-content'
 
 interface ManualHubProps {
   onClose?: () => void
 }
 
 export function ManualHub({ onClose }: ManualHubProps) {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(0)
-  const [selectedCategory, setSelectedCategory] = useState('HOME')
-  const [selectedItem, setSelectedItem] = useState('home')
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  
+  // Initialize from URL parameter
+  const pageParam = searchParams.get('page')
+  const initialItem = pageParam || 'home'
+  const initialCategory = pageParam ? getItemCategory(pageParam) : 'HOME'
+  
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory)
+  const [selectedItem, setSelectedItem] = useState(initialItem)
+  
+  // Sync state when URL changes
+  useEffect(() => {
+    const page = searchParams.get('page')
+    if (page) {
+      const category = getItemCategory(page)
+      setSelectedCategory(category)
+      setSelectedItem(page)
+      setSelectedVideoIndex(0)
+    } else {
+      setSelectedCategory('HOME')
+      setSelectedItem('home')
+    }
+  }, [searchParams])
 
   // Get content for the selected menu item
   const currentContent = useMemo(() => getManualContent(selectedItem), [selectedItem])
@@ -27,6 +51,13 @@ export function ManualHub({ onClose }: ManualHubProps) {
     setSelectedCategory(category)
     setSelectedItem(item)
     setSelectedVideoIndex(0) // Reset video index when switching menus
+    
+    // Update URL with the new page parameter
+    if (item === 'home') {
+      router.push('/', { scroll: false })
+    } else {
+      router.push(`/?page=${item}`, { scroll: false })
+    }
   }
 
   return (
