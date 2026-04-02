@@ -457,7 +457,7 @@ export const manualContents: Record<string, ManualContent> = {
     title: 'システム設定',
     url: 'manual_system',
     videos: [
-      { id: 1, title: 'システム起動とログイン手順', duration: '2:00' },
+      { id: 1, title: 'ログインアカウント設定', duration: '3:45', youtubeUrl: 'https://youtu.be/95U1K6iTjSU' },
     ],
     faqVideos: [
       { id: 1, title: 'Q: 医師と一般スタッフでアカウントを分けるには？', duration: '2:30' },
