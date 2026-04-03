@@ -367,7 +367,7 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 7, title: '標準検査とオプションの振分け', duration: '3:00' },
       { id: 8, title: '新コースの確定と有効���', duration: '2:30' },
       { id: 9, title: '団体情報の新規登録', duration: '3:15' },
-      { id: 10, title: '特定健診の代行機関選択', duration: '2:45' },
+      { id: 10, title: '特定健診の代行���関選択', duration: '2:45' },
       { id: 11, title: '保険団体と所属団体の自動連携', duration: '2:00' },
       { id: 12, title: '契約情報の基本設定', duration: '3:00' },
       { id: 13, title: '契約コースの紐付け', duration: '2:45' },
@@ -451,7 +451,7 @@ export const manualContents: Record<string, ManualContent> = {
     title: 'システム設定',
     url: 'manual_system',
     videos: [
-      { id: 1, title: 'システム起動とログイン手順', duration: '2:00' },
+      { id: 1, title: 'ログインアカウント作成', duration: '2:00', youtubeUrl: 'https://youtu.be/L8ZTMUUL-BY' },
     ],
     faqVideos: [
       { id: 1, title: 'Q: 医師と一般スタッフでアカウントを分けるには？', duration: '2:30' },
