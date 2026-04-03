@@ -216,7 +216,7 @@ export const manualContents: Record<string, ManualContent> = {
         items: [
           '入力内容を再確認',
           '「確定」ボタンをクリック',
-          '確定通��を��認',
+          '確定通���を��認',
         ],
       },
     ],
@@ -358,7 +358,7 @@ export const manualContents: Record<string, ManualContent> = {
     title: '健診情報管理',
     url: 'manual_health_info',
     videos: [
-      { id: 1, title: '団体情報の登録', duration: '3:30', youtubeUrl: 'https://youtu.be/mRSeETqv5Eo' },
+      { id: 1, title: '団体情報の登録', duration: '0:34', youtubeUrl: 'https://youtu.be/mRSeETqv5Eo' },
       { id: 2, title: '新規コースの枠組み作成', duration: '4:00' },
       { id: 3, title: '検査基準管理とコース検索', duration: '3:15' },
       { id: 4, title: 'コース内容の複製（参照複製）', duration: '2:45' },
