@@ -216,7 +216,7 @@ export const manualContents: Record<string, ManualContent> = {
         items: [
           '入力内容を再確認',
           '「確定」ボタンをクリック',
-          '確定通知を��認',
+          '確定通��を��認',
         ],
       },
     ],
@@ -451,7 +451,7 @@ export const manualContents: Record<string, ManualContent> = {
     title: 'システム設定',
     url: 'manual_system',
     videos: [
-      { id: 1, title: 'ログインアカウント作成', duration: '2:00', youtubeUrl: 'https://youtu.be/L8ZTMUUL-BY' },
+      { id: 1, title: 'ログインアカウント作成', duration: '0:22', youtubeUrl: 'https://youtu.be/L8ZTMUUL-BY' },
     ],
     faqVideos: [
       { id: 1, title: 'Q: 医師と一般スタッフでアカウントを分けるには？', duration: '2:30' },
