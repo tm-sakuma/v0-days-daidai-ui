@@ -200,7 +200,7 @@ export const manualContents: Record<string, ManualContent> = {
           '基準値との比較を確認',
           '異常値は自動でハイライト表示',
         ],
-        note: { type: 'tips', title: 'Tips', content: 'Tabキーで次の項目に移動、数値入力後にEnterで確定できます。' },
+        note: { type: 'tips', title: 'Tips', content: 'Tabキーで次の項目に移動、数値入力���にEnterで確定できます。' },
       },
       {
         title: '判定を入力',
@@ -216,7 +216,7 @@ export const manualContents: Record<string, ManualContent> = {
         items: [
           '入力内容を再確認',
           '「確定」ボタンをクリック',
-          '確定通知を確認',
+          '確定通���を��認',
         ],
       },
     ],
@@ -358,7 +358,7 @@ export const manualContents: Record<string, ManualContent> = {
     title: '健診情報管理',
     url: 'manual_health_info',
     videos: [
-      { id: 1, title: '団体情報の登録', duration: '3:30' },
+      { id: 1, title: '団体情報の登録', duration: '0:34', youtubeUrl: 'https://youtu.be/mRSeETqv5Eo' },
       { id: 2, title: '新規コースの枠組み作成', duration: '4:00' },
       { id: 3, title: '検査基準管理とコース検索', duration: '3:15' },
       { id: 4, title: 'コース内容の複製（参照複製）', duration: '2:45' },
@@ -367,7 +367,7 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 7, title: '標準検査とオプションの振分け', duration: '3:00' },
       { id: 8, title: '新コースの確定と有効���', duration: '2:30' },
       { id: 9, title: '団体情報の新規登録', duration: '3:15' },
-      { id: 10, title: '特定健診の代行機関選択', duration: '2:45' },
+      { id: 10, title: '特定健診の代行���関選択', duration: '2:45' },
       { id: 11, title: '保険団体と所属団体の自動連携', duration: '2:00' },
       { id: 12, title: '契約情報の基本設定', duration: '3:00' },
       { id: 13, title: '契約コースの紐付け', duration: '2:45' },
@@ -429,7 +429,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
       },
       {
-        title: '担当医マスター���管理',
+        title: '担当医マスタ�����管理',
         items: [
           '担当医情���を登録',
           '診療科・専門分野を設定',
@@ -451,7 +451,7 @@ export const manualContents: Record<string, ManualContent> = {
     title: 'システム設定',
     url: 'manual_system',
     videos: [
-      { id: 1, title: 'システム起動とログイン手順', duration: '2:00' },
+      { id: 1, title: 'ログインアカウント作成', duration: '0:22', youtubeUrl: 'https://youtu.be/L8ZTMUUL-BY' },
     ],
     faqVideos: [
       { id: 1, title: 'Q: 医師と一般スタッフでアカウントを分けるには？', duration: '2:30' },
