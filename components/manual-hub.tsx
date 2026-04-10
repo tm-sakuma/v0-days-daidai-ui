@@ -102,7 +102,7 @@ export function ManualHub({ onClose }: ManualHubProps) {
           /* Manual Detail View */
           <div className="flex-1 flex flex-col md:flex-row min-w-0 overflow-hidden">
             {/* Video Section */}
-            <div className="w-full md:w-[580px] flex-shrink-0 flex flex-col border-r border-[#eaeaea] overflow-hidden">
+            <div className="w-full md:w-[700px] flex-shrink-0 flex flex-col border-r border-[#eaeaea] overflow-hidden">
               {/* Section Title with Current Content Name */}
               <div className="flex-shrink-0 flex items-center justify-between px-4 py-3 border-b border-[#eaeaea] bg-white">
                 <h2 className="text-sm font-semibold text-[#444444]">{currentContent.title}</h2>
