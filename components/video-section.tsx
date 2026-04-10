@@ -16,6 +16,8 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
   const faqStartIndex = videos.length
   const [completed, setCompleted] = useState<Set<number>>(new Set())
   const selectedVideo = allVideos[selectedIndex] || allVideos[0]
+  const playerRef = useRef<any>(null)
+  const playerInstanceRef = useRef<any>(null)
   
   // Track video titles to detect actual content changes
   const videosKey = videos.map(v => v.title).join(',')
@@ -29,6 +31,61 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
       setCompleted(new Set())
     }
   }, [videosKey, faqKey])
+
+  // YouTube IFrame API の読み込み
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !window.YT) {
+      const tag = document.createElement('script')
+      tag.src = 'https://www.youtube.com/iframe_api'
+      const firstScriptTag = document.getElementsByTagName('script')[0]
+      firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag)
+    }
+  }, [])
+
+  // YouTube プレイヤー の初期化と状態変化のハンドリング
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.YT) return
+
+    const initializePlayer = () => {
+      if (playerRef.current && !playerInstanceRef.current) {
+        const youtubeId = selectedVideo?.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
+        
+        if (youtubeId) {
+          playerInstanceRef.current = new window.YT.Player(playerRef.current, {
+            height: '100%',
+            width: '100%',
+            videoId: youtubeId,
+            events: {
+              onStateChange: (event: any) => {
+                // state: 0=ended, 1=playing, 2=paused, 3=buffering, 5=video cued
+                if (event.data === window.YT.PlayerState.PLAYING) {
+                  setCompleted(prev => {
+                    const next = new Set(prev)
+                    next.add(selectedIndex)
+                    return next
+                  })
+                }
+              }
+            }
+          })
+        }
+      }
+    }
+
+    // YouTube API が利用可能になったら初期化
+    if (window.YT && window.YT.Player) {
+      initializePlayer()
+    } else {
+      // API がまだ利用可能でない場合は待機
+      const checkInterval = setInterval(() => {
+        if (window.YT && window.YT.Player) {
+          clearInterval(checkInterval)
+          initializePlayer()
+        }
+      }, 100)
+      return () => clearInterval(checkInterval)
+    }
+  }, [selectedIndex, selectedVideo])
 
   function toggleCompleted(index: number, e: React.MouseEvent) {
     e.stopPropagation()
@@ -57,12 +114,10 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
         <div className="w-full rounded-lg overflow-hidden bg-[#1a1a1a] shadow-sm">
           <div className="relative w-full pb-[56.25%]">
             {youtubeId ? (
-              <iframe
+              <div
+                ref={playerRef}
                 className="absolute inset-0 w-full h-full"
-                src={`https://www.youtube.com/embed/${youtubeId}?rel=0`}
-                title={selectedVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                id={`youtube-player-${selectedIndex}`}
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a]">
