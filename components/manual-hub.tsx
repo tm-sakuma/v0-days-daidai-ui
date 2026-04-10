@@ -66,10 +66,18 @@ export function ManualHub({ onClose }: ManualHubProps) {
     }
   }
 
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query)
+    // Navigate to home when user starts searching from a category page
+    if (query.trim() && selectedCategory !== 'HOME') {
+      handleSelectItem('HOME', 'home')
+    }
+  }
+
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Header */}
-      <ManualHeader searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+      <ManualHeader searchQuery={searchQuery} onSearchChange={handleSearchChange} />
 
       {/* Main Content */}
       <div className="flex flex-1 min-h-0 overflow-hidden">
