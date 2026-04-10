@@ -8,6 +8,15 @@ interface ManualHeaderProps {
 }
 
 export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps) {
+  const handleDownloadManual = () => {
+    const link = document.createElement('a')
+    link.href = '/manual.pdf'
+    link.download = 'DAYS-Daidai-manual.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <header className="flex-shrink-0 border-b border-[#eaeaea] bg-white">
       <div className="h-16 flex items-center px-6">
@@ -36,10 +45,7 @@ export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps)
         {/* Download Manual Button */}
         <div className="ml-auto pl-6">
           <button
-            onClick={() => {
-              // TODO: マニュアルのダウンロード処理
-              console.log('Manual download triggered')
-            }}
+            onClick={handleDownloadManual}
             className="inline-flex items-center gap-2 px-4 py-2 bg-[#22d3ee] text-white text-sm font-medium rounded-lg hover:bg-[#06b6d4] active:bg-[#0891b2] transition-all shadow-sm hover:shadow-md"
           >
             <Download className="h-4 w-4" />
