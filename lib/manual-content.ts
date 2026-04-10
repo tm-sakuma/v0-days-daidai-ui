@@ -473,7 +473,7 @@ export const manualContents: Record<string, ManualContent> = {
         youtubeUrl: 'https://youtu.be/b2AnFWTQcIA',
         steps: [
           '左メニュー「健診情報管理」の「契約情報管理」をクリック',
-          '対象を���択し編集',
+          '対象を�����択し編集',
           '「契約情報を保存」をクリック',
         ],
         keywords: ['契約編集', '契約更新', '修正'],
@@ -564,18 +564,7 @@ export const manualContents: Record<string, ManualContent> = {
         keywords: ['ユーザー登録', 'アカウント作成', 'ID発行'],
       },
     ],
-    faqVideos: [
-      {
-        id: 1,
-        title: 'Q：医師と一般スタッフでアカウントを分けるには？',
-        duration: '0:18',
-        youtubeUrl: 'https://youtu.be/JLJYFMiZeEo',
-        steps: [
-          'ユーザー情報の「職種区分」で「Administrator」等を選択し保存',
-        ],
-        keywords: ['職種区分', '権限分け', 'アカウント'],
-      },
-    ],
+    faqVideos: [],
     steps: [],
   },
   system: {
