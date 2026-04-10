@@ -31,15 +31,24 @@ export const manualContents: Record<string, ManualContent> = {
     title: '予約／受付',
     url: 'manual_appointment',
     videos: [
-      { id: 1, title: 'カレンダー予約と日程変更', duration: '3:00' },
-      { id: 2, title: '当日受付とオプション検査追加', duration: '2:45' },
-      { id: 3, title: '予約画面での表示確認', duration: '2:30' },
-      { id: 4, title: '特定健診の予約と受診券情報の入力', duration: '3:15' },
+      { id: 1, title: '【特定健診限定】当日の受付方法', duration: '0:27', youtubeUrl: 'https://youtu.be/wBu9WVDdT6A' },
+      { id: 2, title: 'カレンダー予約と日程変更', duration: '3:00' },
+      { id: 3, title: '当日受付とオプション検査追加', duration: '2:45' },
+      { id: 4, title: '予約画面での表示確認', duration: '2:30' },
+      { id: 5, title: '特定健診の予約と受診券情報の入力', duration: '3:15' },
     ],
     faqVideos: [
       { id: 1, title: 'Q: 受診券番号は何桁入力すればいい？', duration: '2:00' },
     ],
     steps: [
+      {
+        title: '【特定健診限定】当日の受付方法',
+        items: [
+          '予約詳細の下部にある「特定健診受診券情報」セクションを開く',
+          '手元の受診券を見ながら、11桁の整理番号と有効期限を入力',
+          '情報を確認後、「受付済」トグルをオンにして保存',
+        ],
+      },
       {
         title: '予約画面を開く',
         items: [
@@ -200,7 +209,7 @@ export const manualContents: Record<string, ManualContent> = {
           '基準値との比較を確認',
           '異常値は自動でハイライト表示',
         ],
-        note: { type: 'tips', title: 'Tips', content: 'Tabキーで次の項目に移動、数値入力���にEnterで確定できます。' },
+        note: { type: 'tips', title: 'Tips', content: 'Tabキーで次の項目に移動、数値入力����にEnterで確定できます。' },
       },
       {
         title: '判定を入力',
@@ -376,15 +385,31 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 16, title: '特健種別の詳細設定', duration: '3:15' },
     ],
     faqVideos: [
-      { id: 1, title: 'Q: 「個人向け」と「団体向け」どちらを選べばいい？', duration: '2:00' },
+      { id: 1, title: 'Q：「個人向け」と「団体向け」どちらを選べばいい？', duration: '0:11', youtubeUrl: 'https://youtu.be/9CzJb9sYUj4' },
       { id: 2, title: 'Q: コース設定を一番早く終わらせる方法は？', duration: '2:30' },
-      { id: 3, title: 'Q: 「標準検査」と「オプション」の違いはどこで決まる？', duration: '2:15' },
+      { id: 3, title: 'Q：「標準検査」と「オプション」の違いはどこで決まる？', duration: '0:14', youtubeUrl: 'https://youtu.be/mrQwSdE6yp4' },
       { id: 4, title: 'Q: 作ったコースが予約画面に出てこない！', duration: '1:45' },
       { id: 5, title: 'Q: 保険者番号が6桁しかない場合は？', duration: '1:30' },
       { id: 6, title: 'Q: 契約情報の期間設定を早く終わらせるには？', duration: '2:00' },
       { id: 7, title: 'Q: 項目ごとの料金を細かく設定するには？', duration: '2:30' },
     ],
     steps: [
+      {
+        title: 'Q：「個人向け」と「団体向け」どちらを選べばいい？',
+        items: [
+          '窓口支払いの個人予約なら「個人向け」',
+          '会社や組合が費用負担する契約なら「団体向け」を選択',
+          'この選択で「コースリスト」や「請求先」が自動で切り替わる',
+        ],
+      },
+      {
+        title: 'Q：「標準検査」と「オプション」の違いはどこで決まる？',
+        items: [
+          'コースの構成内容編集画面を確認',
+          '「受診対象」と「必須」の両方にチェックがある項目＝標準（基本）検査',
+          'チェックが片方または無い項目＝オプション検査として判別される仕組み',
+        ],
+      },
       {
         title: '健診コースを管理',
         items: [
