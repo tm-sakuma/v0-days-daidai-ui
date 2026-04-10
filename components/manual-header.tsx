@@ -1,6 +1,6 @@
 'use client'
 
-import { Search } from 'lucide-react'
+import { Search, Download } from 'lucide-react'
 
 interface ManualHeaderProps {
   searchQuery: string
@@ -8,6 +8,15 @@ interface ManualHeaderProps {
 }
 
 export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps) {
+  const handleDownloadManual = () => {
+    const link = document.createElement('a')
+    link.href = '/manual.pdf'
+    link.download = 'DAYS-Daidai-manual.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <header className="flex-shrink-0 border-b border-[#eaeaea] bg-white">
       <div className="h-16 flex items-center px-6">
@@ -31,6 +40,17 @@ export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps)
               className="w-full pl-10 pr-4 py-2 bg-[#f7f7f7] border border-[#e8e8e8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22d3ee]/30 focus:border-[#22d3ee] text-sm text-[#1a1a1a] placeholder:text-[#aaaaaa] transition-all"
             />
           </div>
+        </div>
+
+        {/* Download Manual Button */}
+        <div className="ml-auto pl-6">
+          <button
+            onClick={handleDownloadManual}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#22d3ee] text-white text-sm font-medium rounded-lg hover:bg-[#06b6d4] active:bg-[#0891b2] transition-all shadow-sm hover:shadow-md"
+          >
+            <Download className="h-4 w-4" />
+            <span>マニュアルをダウンロード</span>
+          </button>
         </div>
       </div>
     </header>
