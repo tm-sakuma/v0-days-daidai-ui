@@ -760,10 +760,9 @@ export function getRecentVideos(count: number = 3): VideoWithCategory[] {
   return allVideos.slice(-count).reverse()
 }
 
-// Get popular videos (random selection)
+// Get popular videos (fixed selection from different categories)
 export function getPopularVideos(count: number = 4): VideoWithCategory[] {
   const allVideos = getAllVideos()
-  // Shuffle and return N random videos
-  const shuffled = [...allVideos].sort(() => Math.random() - 0.5)
-  return shuffled.slice(0, count)
+  // Return first N videos from the beginning (deterministic order)
+  return allVideos.slice(0, count)
 }
