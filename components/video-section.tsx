@@ -38,6 +38,20 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
       setCompleted(new Set())
     }
   }, [videosKey, faqKey])
+  
+  // Cleanup player on unmount
+  useEffect(() => {
+    return () => {
+      if (playerInstanceRef.current) {
+        try {
+          playerInstanceRef.current.destroy()
+        } catch (e) {
+          // ignore
+        }
+        playerInstanceRef.current = null
+      }
+    }
+  }, [])
 
   // YouTube IFrame API の読み込み
   useEffect(() => {
@@ -106,7 +120,19 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
     if (!isApiReady) return
     
     const youtubeId = selectedVideo?.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
-    if (!youtubeId) return
+    
+    // If no video ID, destroy existing player to stop playback
+    if (!youtubeId) {
+      if (playerInstanceRef.current) {
+        try {
+          playerInstanceRef.current.destroy()
+        } catch (e) {
+          // ignore
+        }
+        playerInstanceRef.current = null
+      }
+      return
+    }
     
     // If player exists, load new video; otherwise initialize
     if (playerInstanceRef.current && typeof playerInstanceRef.current.loadVideoById === 'function') {
