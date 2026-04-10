@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { Play, Check } from 'lucide-react'
 import type { VideoItem } from '@/lib/manual-content'
 
@@ -16,8 +16,15 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
   const faqStartIndex = videos.length
   const [completed, setCompleted] = useState<Set<number>>(new Set())
   const selectedVideo = allVideos[selectedIndex] || allVideos[0]
-  const playerRef = useRef<any>(null)
+  const playerRef = useRef<HTMLDivElement>(null)
   const playerInstanceRef = useRef<any>(null)
+  const [isApiReady, setIsApiReady] = useState(false)
+  const selectedIndexRef = useRef(selectedIndex)
+  
+  // Keep selectedIndex ref updated
+  useEffect(() => {
+    selectedIndexRef.current = selectedIndex
+  }, [selectedIndex])
   
   // Track video titles to detect actual content changes
   const videosKey = videos.map(v => v.title).join(',')
@@ -34,52 +41,85 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
 
   // YouTube IFrame API の読み込み
   useEffect(() => {
-    if (typeof window !== 'undefined' && !window.YT) {
+    if (typeof window === 'undefined') return
+    
+    // API already loaded
+    if (window.YT && window.YT.Player) {
+      setIsApiReady(true)
+      return
+    }
+    
+    // Set up callback for when API is ready
+    const originalCallback = window.onYouTubeIframeAPIReady
+    window.onYouTubeIframeAPIReady = () => {
+      originalCallback?.()
+      setIsApiReady(true)
+    }
+    
+    // Load script if not already loading
+    if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
       const tag = document.createElement('script')
       tag.src = 'https://www.youtube.com/iframe_api'
       const firstScriptTag = document.getElementsByTagName('script')[0]
       firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag)
     }
+    
+    return () => {
+      window.onYouTubeIframeAPIReady = originalCallback
+    }
   }, [])
 
-  // YouTube プレイヤーの初期化 (初回のみ)
-  useEffect(() => {
-    if (typeof window === 'undefined' || !window.YT || !window.YT.Player) return
-    if (playerInstanceRef.current || !playerRef.current) return
-
-    const youtubeId = selectedVideo?.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
+  // Initialize player function
+  const initializePlayer = useCallback((youtubeId: string) => {
+    if (!playerRef.current || !window.YT?.Player) return
     
-    if (youtubeId) {
-      playerInstanceRef.current = new window.YT.Player(playerRef.current, {
-        height: '100%',
-        width: '100%',
-        videoId: youtubeId,
-        events: {
-          onStateChange: (event: any) => {
-            // state: 0=ended, 1=playing, 2=paused, 3=buffering, 5=video cued
-            if (event.data === window.YT.PlayerState.PLAYING) {
-              setCompleted(prev => {
-                const next = new Set(prev)
-                next.add(selectedIndex)
-                return next
-              })
-            }
+    // Destroy existing player if any
+    if (playerInstanceRef.current) {
+      try {
+        playerInstanceRef.current.destroy()
+      } catch (e) {
+        // ignore
+      }
+      playerInstanceRef.current = null
+    }
+    
+    playerInstanceRef.current = new window.YT.Player(playerRef.current, {
+      height: '100%',
+      width: '100%',
+      videoId: youtubeId,
+      events: {
+        onStateChange: (event: any) => {
+          if (event.data === window.YT.PlayerState.PLAYING) {
+            setCompleted(prev => {
+              const next = new Set(prev)
+              next.add(selectedIndexRef.current)
+              return next
+            })
           }
         }
-      })
-    }
+      }
+    })
   }, [])
 
-  // 動画選択が変わった時に新しい動画をロード
+  // Initialize or update player when API is ready or video changes
   useEffect(() => {
-    if (!playerInstanceRef.current) return
-
-    const youtubeId = selectedVideo?.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
+    if (!isApiReady) return
     
-    if (youtubeId && playerInstanceRef.current.loadVideoById) {
-      playerInstanceRef.current.loadVideoById(youtubeId)
+    const youtubeId = selectedVideo?.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
+    if (!youtubeId) return
+    
+    // If player exists, load new video; otherwise initialize
+    if (playerInstanceRef.current && typeof playerInstanceRef.current.loadVideoById === 'function') {
+      try {
+        playerInstanceRef.current.loadVideoById(youtubeId)
+      } catch (e) {
+        // Player might be in bad state, reinitialize
+        initializePlayer(youtubeId)
+      }
+    } else {
+      initializePlayer(youtubeId)
     }
-  }, [selectedIndex, selectedVideo])
+  }, [isApiReady, selectedIndex, selectedVideo, initializePlayer])
 
   function toggleCompleted(index: number, e: React.MouseEvent) {
     e.stopPropagation()
