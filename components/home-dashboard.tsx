@@ -216,15 +216,15 @@ export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeD
               <button
                 key={`popular-${item.categoryId}-${item.video.id}-${index}`}
                 onClick={() => onNavigate(getItemCategory(item.categoryId), item.categoryId)}
-                className="w-full px-4 py-3 text-left hover:bg-[#fafafa] transition-colors flex items-center justify-between"
+                className="w-full px-4 py-3 text-left hover:bg-[#fafafa] transition-colors"
               >
-                <div className="flex items-center gap-3">
-                  <div className="h-8 w-8 rounded bg-[#1a1a1a] flex items-center justify-center">
+                <div className="flex items-center gap-3 mb-1">
+                  <div className="h-8 w-8 rounded bg-[#1a1a1a] flex items-center justify-center flex-shrink-0">
                     <Play className="h-3 w-3 text-white fill-white" />
                   </div>
                   <p className="text-sm text-[#333333]">{item.video.title}</p>
                 </div>
-                <span className="text-[10px] text-[#999999]">{(index + 1) * 250}{VIEWS_SUFFIX}</span>
+                <p className="text-[10px] text-[#999999] ml-11">{item.categoryTitle}</p>
               </button>
             ))}
           </div>
