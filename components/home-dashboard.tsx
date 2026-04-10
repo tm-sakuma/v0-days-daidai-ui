@@ -1,6 +1,8 @@
 'use client'
 
-import { Search, Play, FileText, Calendar, Users, FileOutput, ClipboardList, MessageSquare, Download, Upload, Database, Settings, Shield } from 'lucide-react'
+import { Search, Play, FileText, Calendar, Users, FileOutput, ClipboardList, MessageSquare, Download, Upload, Database, Settings, Shield, Clock } from 'lucide-react'
+import { useMemo } from 'react'
+import { searchVideos, getItemCategory } from '@/lib/manual-content'
 
 interface HomeDashboardProps {
   searchQuery: string
@@ -83,6 +85,9 @@ const POPULAR_VIDEOS_TITLE = '\u3088\u304F\u898B\u3089\u308C\u3066\u3044\u308B\u
 const VIEWS_SUFFIX = ' \u56DE\u8996\u8074'
 
 export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeDashboardProps) {
+  const searchResults = useMemo(() => searchVideos(searchQuery), [searchQuery])
+  const hasSearchQuery = searchQuery.trim().length > 0
+
   return (
     <div className="flex-1 overflow-y-auto bg-[#fafafa]">
       {/* Hero Section with Search */}
@@ -105,7 +110,47 @@ export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeD
         </div>
       </div>
 
-      {/* Category Cards */}
+      {/* Search Results */}
+      {hasSearchQuery && (
+        <div className="px-6 py-6">
+          <h2 className="text-sm font-semibold text-[#444444] mb-4">
+            「{searchQuery}」の検索結果 ({searchResults.length}件)
+          </h2>
+          {searchResults.length > 0 ? (
+            <div className="bg-white rounded-lg border border-[#eaeaea] divide-y divide-[#f0f0f0]">
+              {searchResults.map((result, index) => (
+                <button
+                  key={`${result.categoryId}-${result.video.id}-${index}`}
+                  onClick={() => onNavigate(getItemCategory(result.categoryId), result.categoryId)}
+                  className="w-full px-4 py-3 text-left hover:bg-[#fafafa] transition-colors flex items-start gap-3"
+                >
+                  <div className="h-10 w-10 rounded bg-[#1a1a1a] flex items-center justify-center flex-shrink-0">
+                    <Play className="h-4 w-4 text-white fill-white" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-[#333333] font-medium mb-1">{result.video.title}</p>
+                    <div className="flex items-center gap-2 text-[10px] text-[#999999]">
+                      <span className="px-1.5 py-0.5 bg-[#f0f0f0] rounded">{result.categoryTitle}</span>
+                      <span className="flex items-center gap-1">
+                        <Clock className="h-3 w-3" />
+                        {result.video.duration}
+                      </span>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-white rounded-lg border border-[#eaeaea] px-6 py-12 text-center">
+              <p className="text-sm text-[#666666]">該当する動画が見つかりませんでした</p>
+              <p className="text-[11px] text-[#999999] mt-1">別のキーワードでお試しください</p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Category Cards - only show when not searching */}
+      {!hasSearchQuery && (
       <div className="px-6 py-8">
         <h2 className="text-sm font-semibold text-[#444444] mb-4">{CATEGORY_SECTION_TITLE}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -146,8 +191,10 @@ export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeD
           ))}
         </div>
       </div>
+      )}
 
-      {/* Two Column Section */}
+      {/* Two Column Section - only show when not searching */}
+      {!hasSearchQuery && (
       <div className="px-6 pb-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recently Added */}
         <div className="bg-white rounded-lg border border-[#eaeaea] overflow-hidden">
@@ -194,6 +241,7 @@ export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeD
           </div>
         </div>
       </div>
+      )}
     </div>
   )
 }

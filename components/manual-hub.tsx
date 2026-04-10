@@ -47,6 +47,12 @@ export function ManualHub({ onClose }: ManualHubProps) {
   // Get content for the selected menu item
   const currentContent = useMemo(() => getManualContent(selectedItem), [selectedItem])
 
+  // Get the currently selected video
+  const selectedVideo = useMemo(() => {
+    const allVideos = [...currentContent.videos, ...(currentContent.faqVideos || [])]
+    return allVideos[selectedVideoIndex] || null
+  }, [currentContent, selectedVideoIndex])
+
   const handleSelectItem = (category: string, item: string) => {
     setSelectedCategory(category)
     setSelectedItem(item)
@@ -60,10 +66,18 @@ export function ManualHub({ onClose }: ManualHubProps) {
     }
   }
 
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query)
+    // Navigate to home when user starts searching from a category page
+    if (query.trim() && selectedCategory !== 'HOME') {
+      handleSelectItem('HOME', 'home')
+    }
+  }
+
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Header */}
-      <ManualHeader searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+      <ManualHeader searchQuery={searchQuery} onSearchChange={handleSearchChange} />
 
       {/* Main Content */}
       <div className="flex flex-1 min-h-0 overflow-hidden">
@@ -122,7 +136,7 @@ export function ManualHub({ onClose }: ManualHubProps) {
 
               {/* Scrollable Documentation Content */}
               <div className="flex-1 overflow-y-auto">
-                <DocumentationSection steps={currentContent.steps} />
+                <DocumentationSection steps={currentContent.steps} selectedVideo={selectedVideo} />
               </div>
             </div>
           </div>
