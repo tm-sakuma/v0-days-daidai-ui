@@ -192,9 +192,9 @@ export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeD
             <h3 className="text-sm font-semibold text-[#444444]">{RECENT_MANUALS_TITLE}</h3>
           </div>
           <div className="divide-y divide-[#f0f0f0]">
-            {recentVideos.map((item) => (
+            {recentVideos.map((item, index) => (
               <button
-                key={`${item.categoryId}-${item.video.id}`}
+                key={`recent-${item.categoryId}-${item.video.id}-${index}`}
                 onClick={() => onNavigate(getItemCategory(item.categoryId), item.categoryId)}
                 className="w-full px-4 py-3 text-left hover:bg-[#fafafa] transition-colors"
               >
@@ -214,7 +214,7 @@ export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeD
           <div className="divide-y divide-[#f0f0f0]">
             {popularVideos.map((item, index) => (
               <button
-                key={`${item.categoryId}-${item.video.id}`}
+                key={`popular-${item.categoryId}-${item.video.id}-${index}`}
                 onClick={() => onNavigate(getItemCategory(item.categoryId), item.categoryId)}
                 className="w-full px-4 py-3 text-left hover:bg-[#fafafa] transition-colors flex items-center justify-between"
               >
