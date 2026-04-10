@@ -293,34 +293,6 @@ export const manualContents: Record<string, ManualContent> = {
     ],
     steps: [],
   },
-      {
-        title: '検査結果を入力',
-        items: [
-          '各検査項目の数値を入力',
-          '基準値との比較を確認',
-          '異常値は自動でハイライト表示',
-        ],
-        note: { type: 'tips', title: 'Tips', content: 'Tabキーで次の項目に移動、数値入力����にEnterで確定できます。' },
-      },
-      {
-        title: '判定を入力',
-        items: [
-          '総合判定を選択',
-          '各項目の個別判定を入力',
-          '所見コメントを記入',
-        ],
-        note: { type: 'warning', title: '注意', content: '判定確定後の修正は管理者権限が必要です。' },
-      },
-      {
-        title: 'データを確定',
-        items: [
-          '入力内容を再確認',
-          '「確定」ボタンをクリック',
-          '確定通���を��認',
-        ],
-      },
-    ],
-  },
   questionnaire: {
     title: '問診入力',
     url: 'manual_questionnaire',
