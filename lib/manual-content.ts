@@ -200,18 +200,6 @@ export const manualContents: Record<string, ManualContent> = {
       },
       {
         id: 2,
-        title: '検査結果の報告書などの帳表の印刷',
-        duration: '0:24',
-        youtubeUrl: 'https://youtu.be/SPo9az7P3cc',
-        steps: [
-          '印刷出力ボタンをクリックします',
-          'メニューから報告書の書式を選択します',
-          '他の帳票も画面左上に印刷するボタンが表示されます',
-        ],
-        keywords: ['結果報告書', '印刷手順', '健診結果', '成績表', '出力方法', 'PDF保存', '報告書発行', '最終出力'],
-      },
-      {
-        id: 3,
         title: '予約受付者名簿を出力する',
         duration: '0:42',
         youtubeUrl: 'https://youtu.be/3TxB-bnR_Gw',
@@ -255,6 +243,18 @@ export const manualContents: Record<string, ManualContent> = {
           '手動入力の場合は、ダブルクリックで直接入力も可能です',
         ],
         keywords: ['自動判定', 'ランク付け', '総合判定', 'コメント自動', '判定ロジック', 'アルゴリズム', '医師判定'],
+      },
+      {
+        id: 3,
+        title: '検査結果の報告書などの帳表の印刷',
+        duration: '0:24',
+        youtubeUrl: 'https://youtu.be/SPo9az7P3cc',
+        steps: [
+          '印刷出力ボタンをクリックします',
+          'メニューから報告書の書式を選択します',
+          '他の帳票も画面左上に印刷するボタンが表示されます',
+        ],
+        keywords: ['結果報告書', '印刷手順', '健診結果', '成績表', '出力方法', 'PDF保存', '報告書発行', '最終出力'],
       },
     ],
     faqVideos: [
@@ -394,7 +394,7 @@ export const manualContents: Record<string, ManualContent> = {
         steps: [
           '「健診情報管理」の「コース管理」画面を開きます',
           '「コース内容管理」タブをクリックします',
-          '「新規作成」ボタンをクリックします',
+          '「新規作成」ボタンをクリックし���す',
           '「内容名称」欄にコース名を入力します',
           '「コース用途」をプルダウンから選択します',
           '「コースグループを登録」をクリックして内容を保存します',
