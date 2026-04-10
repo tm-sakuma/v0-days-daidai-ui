@@ -5,6 +5,10 @@ export interface VideoItem {
   title: string
   duration: string
   youtubeUrl?: string
+  steps?: string[]
+  keywords?: string[]
+  warning?: string
+  tips?: string
 }
 
 export interface StepItem {
@@ -31,64 +35,21 @@ export const manualContents: Record<string, ManualContent> = {
     title: '予約／受付',
     url: 'manual_appointment',
     videos: [
-      { id: 1, title: '【特定健診限定】当日の受付方法', duration: '0:27', youtubeUrl: 'https://youtu.be/wBu9WVDdT6A' },
-      { id: 2, title: 'カレンダー予約と日程変更', duration: '3:00' },
-      { id: 3, title: '当日受付とオプション検査追加', duration: '2:45' },
-      { id: 4, title: '予約画面での表示確認', duration: '2:30' },
-      { id: 5, title: '特定健診の予約と受診券情報の入力', duration: '3:15' },
-    ],
-    faqVideos: [
-      { id: 1, title: 'Q: 受診券番号は何桁入力すればいい？', duration: '2:00' },
-    ],
-    steps: [
       {
+        id: 1,
         title: '【特定健診限定】当日の受付方法',
-        items: [
+        duration: '0:27',
+        youtubeUrl: 'https://youtu.be/wBu9WVDdT6A',
+        steps: [
           '予約詳細の下部にある「特定健診受診券情報」セクションを開く',
           '手元の受診券を見ながら、11桁の整理番号と有効期限を入力',
           '情報を確認後、「受付済」トグルをオンにして保存',
         ],
-      },
-      {
-        title: '予約画面を開く',
-        items: [
-          'メインメニューから「予約／受付」を選択',
-          'カレンダービューまたはリストビューを選択',
-          '日付を指定して予約状況を確認',
-        ],
-        note: { type: 'tips', title: 'Tips', content: 'キーボードショートカット「Alt+R」で予約画面に直接アクセスできます。' },
-      },
-      {
-        title: '新規予約の登録',
-        items: [
-          '「新規予約」ボタンをクリック',
-          '受診者情報を入力または検索',
-          '健診コースを選択',
-          '希望日時を指定',
-          '「予約確定」をクリック',
-        ],
-        note: { type: 'warning', title: '注意', content: '同一日時に重複予約がある場合はアラートが表示されます。' },
-      },
-      {
-        title: '受付処理',
-        items: [
-          '予約一覧から該当者を選択',
-          '来院確認ボタンをクリック',
-          '受付票を印刷（必要に応じて）',
-          '検査室への案内',
-        ],
-      },
-      {
-        title: '予約の変更・キャンセル',
-        items: [
-          '予約詳細画面を開く',
-          '「編集」または「キャンセル」を選択',
-          '変更内容を入力',
-          '変更理由を記録',
-        ],
-        note: { type: 'tips', title: 'Tips', content: 'キャンセル履歴は受診者情報画面から確認できます。' },
+        keywords: ['特定健診受付', '受診券番号', '番号入力', '有効期限', '40歳以上', '健診窓口', '整理番号'],
       },
     ],
+    faqVideos: [],
+    steps: [],
   },
   patient: {
     title: '受診者管理',
@@ -385,58 +346,32 @@ export const manualContents: Record<string, ManualContent> = {
       { id: 16, title: '特健種別の詳細設定', duration: '3:15' },
     ],
     faqVideos: [
-      { id: 1, title: 'Q：「個人向け」と「団体向け」どちらを選べばいい？', duration: '0:11', youtubeUrl: 'https://youtu.be/9CzJb9sYUj4' },
-      { id: 2, title: 'Q: コース設定を一番早く終わらせる方法は？', duration: '2:30' },
-      { id: 3, title: 'Q：「標準検査」と「オプション」の違いはどこで決まる？', duration: '0:14', youtubeUrl: 'https://youtu.be/mrQwSdE6yp4' },
-      { id: 4, title: 'Q: 作ったコースが予約画面に出てこない！', duration: '1:45' },
-      { id: 5, title: 'Q: 保険者番号が6桁しかない場合は？', duration: '1:30' },
-      { id: 6, title: 'Q: 契約情報の期間設定を早く終わらせるには？', duration: '2:00' },
-      { id: 7, title: 'Q: 項目ごとの料金を細かく設定するには？', duration: '2:30' },
-    ],
-    steps: [
       {
+        id: 1,
         title: 'Q：「個人向け」と「団体向け」どちらを選べばいい？',
-        items: [
+        duration: '0:11',
+        youtubeUrl: 'https://youtu.be/9CzJb9sYUj4',
+        steps: [
           '窓口支払いの個人予約なら「個人向け」',
           '会社や組合が費用負担する契約なら「団体向け」を選択',
-          'この選択で「コースリスト」や「請求先」が自動で切り替わる',
+          'この選択で「コースリスト」や「請求先」が自動で切り替わる点を解説',
         ],
+        keywords: ['個人団体', '区分選択', '請求切替', '自費健診', '会社健診', 'コース出ない', '判別方法'],
       },
       {
+        id: 2,
         title: 'Q：「標準検査」と「オプション」の違いはどこで決まる？',
-        items: [
+        duration: '0:14',
+        youtubeUrl: 'https://youtu.be/mrQwSdE6yp4',
+        steps: [
           'コースの構成内容編集画面を確認',
           '「受診対象」と「必須」の両方にチェックがある項目＝標準（基本）検査',
-          'チェックが片方または無い項目＝オプション検査として判別される仕組み',
+          'チェックが片方または無い項目＝オプション検査として判別される仕組みを解説',
         ],
-      },
-      {
-        title: '健診コースを管理',
-        items: [
-          '健診コース一覧を開く',
-          'コースの追加・編集・削除',
-          '含まれる検査項目を設定',
-        ],
-      },
-      {
-        title: '検査項目を管理',
-        items: [
-          '検査項目マスターを開く',
-          '項目の追加・編集',
-          '表示順序の設定',
-        ],
-        note: { type: 'warning', title: '注意', content: '使用中の項目を削除すると過去データに影響が出る場合があります。' },
-      },
-      {
-        title: '基準値を設定',
-        items: [
-          '各検査項目の基準値を入力',
-          '年齢・性別による基準値の分岐',
-          '異常値の判定ルールを設定',
-        ],
-        note: { type: 'tips', title: 'Tips', content: '基準値変更は次回以降の判定に適用されます。' },
+        keywords: ['判別基準', '必須項目', 'オプション設定', '標準項目', '違い', '見分け方', '設定ルール'],
       },
     ],
+    steps: [],
   },
   master: {
     title: 'マスター管理',

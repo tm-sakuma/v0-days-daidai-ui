@@ -47,6 +47,12 @@ export function ManualHub({ onClose }: ManualHubProps) {
   // Get content for the selected menu item
   const currentContent = useMemo(() => getManualContent(selectedItem), [selectedItem])
 
+  // Get the currently selected video
+  const selectedVideo = useMemo(() => {
+    const allVideos = [...currentContent.videos, ...(currentContent.faqVideos || [])]
+    return allVideos[selectedVideoIndex] || null
+  }, [currentContent, selectedVideoIndex])
+
   const handleSelectItem = (category: string, item: string) => {
     setSelectedCategory(category)
     setSelectedItem(item)
@@ -122,7 +128,7 @@ export function ManualHub({ onClose }: ManualHubProps) {
 
               {/* Scrollable Documentation Content */}
               <div className="flex-1 overflow-y-auto">
-                <DocumentationSection steps={currentContent.steps} />
+                <DocumentationSection steps={currentContent.steps} selectedVideo={selectedVideo} />
               </div>
             </div>
           </div>
