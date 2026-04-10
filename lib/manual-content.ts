@@ -238,7 +238,7 @@ export const manualContents: Record<string, ManualContent> = {
         id: 3,
         title: '検査結果の報告書などの帳票の印刷',
         duration: '0:24',
-        youtubeUrl: 'https://youtu.be/SPo9az7P3cc',
+        youtubeUrl: 'https://youtu.be/uEabDeZQy3U',
         steps: [
           '「結果入力」画面右上の「印刷出力」をクリック',
           '報告書書式を選択し「印刷」',
@@ -473,7 +473,7 @@ export const manualContents: Record<string, ManualContent> = {
         youtubeUrl: 'https://youtu.be/b2AnFWTQcIA',
         steps: [
           '左メニュー「健診情報管理」の「契約情報管理」をクリック',
-          '対象を���択し編集',
+          '対象を�����択し編集',
           '「契約情報を保存」をクリック',
         ],
         keywords: ['契約編集', '契約更新', '修正'],
