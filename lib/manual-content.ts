@@ -200,7 +200,7 @@ export const manualContents: Record<string, ManualContent> = {
       },
       {
         id: 2,
-        title: '予約受付者名簿を出力する',
+        title: '予約受付者名簿を出力す���',
         duration: '0:42',
         youtubeUrl: 'https://youtu.be/3TxB-bnR_Gw',
         steps: [
@@ -601,7 +601,7 @@ export const manualContents: Record<string, ManualContent> = {
           'パスワードを入力します',
           '「ログイン」ボタンをクリックします',
         ],
-        keywords: ['起動', 'ログイン', 'ID', 'パスワード'],
+        keywords: ['起動', 'ログイン', 'ID', 'パスワ���ド'],
       },
     ],
     faqVideos: [
@@ -727,4 +727,43 @@ export function searchVideos(query: string): SearchResult[] {
   }
 
   return results
+}
+
+// Get all videos with their category info
+export interface VideoWithCategory {
+  categoryId: string
+  categoryTitle: string
+  video: VideoItem
+}
+
+export function getAllVideos(): VideoWithCategory[] {
+  const allVideos: VideoWithCategory[] = []
+
+  for (const [categoryId, content] of Object.entries(manualContents)) {
+    const videos = [...content.videos, ...(content.faqVideos || [])]
+    for (const video of videos) {
+      allVideos.push({
+        categoryId,
+        categoryTitle: content.title,
+        video,
+      })
+    }
+  }
+
+  return allVideos
+}
+
+// Get recent videos (last N added)
+export function getRecentVideos(count: number = 3): VideoWithCategory[] {
+  const allVideos = getAllVideos()
+  // Return last N videos (most recently defined in the content)
+  return allVideos.slice(-count).reverse()
+}
+
+// Get popular videos (random selection)
+export function getPopularVideos(count: number = 4): VideoWithCategory[] {
+  const allVideos = getAllVideos()
+  // Shuffle and return N random videos
+  const shuffled = [...allVideos].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, count)
 }

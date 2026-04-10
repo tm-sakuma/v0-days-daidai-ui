@@ -2,7 +2,7 @@
 
 import { Search, Play, FileText, Calendar, Users, FileOutput, ClipboardList, MessageSquare, Download, Upload, Database, Settings, Shield, Clock } from 'lucide-react'
 import { useMemo } from 'react'
-import { searchVideos, getItemCategory } from '@/lib/manual-content'
+import { searchVideos, getItemCategory, getRecentVideos, getPopularVideos } from '@/lib/manual-content'
 
 interface HomeDashboardProps {
   searchQuery: string
@@ -63,29 +63,18 @@ const categories = [
   },
 ]
 
-const recentManuals = [
-  { id: 'import', category: 'OPTIONS', title: 'CSV\u30A4\u30F3\u30DD\u30FC\u30C8\u624B\u9806\u304C\u66F4\u65B0\u3055\u308C\u307E\u3057\u305F', date: '2024/01/15' },
-  { id: 'appointment', category: 'FRONT_OFFICE', title: '\u4E88\u7D04\u30AB\u30EC\u30F3\u30C0\u30FC\u306E\u65B0\u6A5F\u80FD\u306B\u3064\u3044\u3066', date: '2024/01/12' },
-  { id: 'result', category: 'HEALTH_EXAMINATION', title: '\u7D50\u679C\u5165\u529B\u306E\u4E00\u62EC\u767B\u9332\u6A5F\u80FD', date: '2024/01/10' },
-]
-
-const popularVideos = [
-  { id: 'patient', category: 'FRONT_OFFICE', title: '\u53D7\u8A3A\u8005\u306E\u65B0\u898F\u767B\u9332\u65B9\u6CD5', views: 1250 },
-  { id: 'appointment', category: 'FRONT_OFFICE', title: '\u4E88\u7D04\u30AB\u30EC\u30F3\u30C0\u30FC\u306E\u57FA\u672C\u64CD\u4F5C', views: 980 },
-  { id: 'import', category: 'OPTIONS', title: 'CSV\u30D5\u30A1\u30A4\u30EB\u306E\u6E96\u5099\u65B9\u6CD5', views: 856 },
-  { id: 'report', category: 'BACK_OFFICE', title: '\u5E33\u7968\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\u306E\u9078\u629E', views: 742 },
-]
-
-const HELP_CENTER_TITLE = '\u30D8\u30EB\u30D7\u30BB\u30F3\u30BF\u30FC'
-const HELP_CENTER_DESC = '\u304A\u63A2\u3057\u306E\u64CD\u4F5C\u30DE\u30CB\u30E5\u30A2\u30EB\u3092\u691C\u7D22\u3001\u307E\u305F\u306F\u4E0B\u306E\u30AB\u30C6\u30B4\u30EA\u30FC\u304B\u3089\u304A\u9078\u3073\u304F\u3060\u3055\u3044'
-const SEARCH_PLACEHOLDER = '\u30AD\u30FC\u30EF\u30FC\u30C9\u3067\u30DE\u30CB\u30E5\u30A2\u30EB\u3092\u691C\u7D22...'
-const CATEGORY_SECTION_TITLE = '\u30AB\u30C6\u30B4\u30EA\u30FC\u304B\u3089\u63A2\u3059'
-const RECENT_MANUALS_TITLE = '\u6700\u8FD1\u8FFD\u52A0\u3055\u308C\u305F\u30DE\u30CB\u30E5\u30A2\u30EB'
-const POPULAR_VIDEOS_TITLE = '\u3088\u304F\u898B\u3089\u308C\u3066\u3044\u308B\u52D5\u753B'
-const VIEWS_SUFFIX = ' \u56DE\u8996\u8074'
+const HELP_CENTER_TITLE = 'ヘルプセンター'
+const HELP_CENTER_DESC = 'お探しの操作マニュアルを検索、または下のカテゴリーからお選びください'
+const SEARCH_PLACEHOLDER = 'キーワードでマニュアルを検索...'
+const CATEGORY_SECTION_TITLE = 'カテゴリーから探す'
+const RECENT_MANUALS_TITLE = '最近追加されたマニュアル'
+const POPULAR_VIDEOS_TITLE = 'よく見られている動画'
+const VIEWS_SUFFIX = ' 回視聴'
 
 export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeDashboardProps) {
   const searchResults = useMemo(() => searchVideos(searchQuery), [searchQuery])
+  const recentVideos = useMemo(() => getRecentVideos(3), [])
+  const popularVideos = useMemo(() => getPopularVideos(4), [])
   const hasSearchQuery = searchQuery.trim().length > 0
 
   return (
@@ -203,14 +192,14 @@ export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeD
             <h3 className="text-sm font-semibold text-[#444444]">{RECENT_MANUALS_TITLE}</h3>
           </div>
           <div className="divide-y divide-[#f0f0f0]">
-            {recentManuals.map((manual, index) => (
+            {recentVideos.map((item) => (
               <button
-                key={index}
-                onClick={() => onNavigate(manual.category, manual.id)}
+                key={`${item.categoryId}-${item.video.id}`}
+                onClick={() => onNavigate(getItemCategory(item.categoryId), item.categoryId)}
                 className="w-full px-4 py-3 text-left hover:bg-[#fafafa] transition-colors"
               >
-                <p className="text-sm text-[#333333] mb-1">{manual.title}</p>
-                <p className="text-[10px] text-[#999999]">{manual.date}</p>
+                <p className="text-sm text-[#333333] mb-1">{item.video.title}</p>
+                <p className="text-[10px] text-[#999999]">{item.categoryTitle}</p>
               </button>
             ))}
           </div>
@@ -223,19 +212,19 @@ export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeD
             <h3 className="text-sm font-semibold text-[#444444]">{POPULAR_VIDEOS_TITLE}</h3>
           </div>
           <div className="divide-y divide-[#f0f0f0]">
-            {popularVideos.map((video, index) => (
+            {popularVideos.map((item, index) => (
               <button
-                key={index}
-                onClick={() => onNavigate(video.category, video.id)}
+                key={`${item.categoryId}-${item.video.id}`}
+                onClick={() => onNavigate(getItemCategory(item.categoryId), item.categoryId)}
                 className="w-full px-4 py-3 text-left hover:bg-[#fafafa] transition-colors flex items-center justify-between"
               >
                 <div className="flex items-center gap-3">
                   <div className="h-8 w-8 rounded bg-[#1a1a1a] flex items-center justify-center">
                     <Play className="h-3 w-3 text-white fill-white" />
                   </div>
-                  <p className="text-sm text-[#333333]">{video.title}</p>
+                  <p className="text-sm text-[#333333]">{item.video.title}</p>
                 </div>
-                <span className="text-[10px] text-[#999999]">{video.views.toLocaleString()}{VIEWS_SUFFIX}</span>
+                <span className="text-[10px] text-[#999999]">{(index + 1) * 250}{VIEWS_SUFFIX}</span>
               </button>
             ))}
           </div>
