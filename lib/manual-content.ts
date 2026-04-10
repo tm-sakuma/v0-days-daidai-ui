@@ -293,41 +293,6 @@ export const manualContents: Record<string, ManualContent> = {
     ],
     steps: [],
   },
-  questionnaire: {
-    title: '問診入力',
-    url: 'manual_questionnaire',
-    videos: [
-      { id: 1, title: '問診回��の入力', duration: '2:00' },
-      { id: 2, title: '特定健診22項目の問診入力', duration: '2:30' },
-    ],
-    steps: [
-      {
-        title: '問診入力��面を開く',
-        items: [
-          '対象の受診者を選択',
-          '問診入力タブを開く',
-          '該当する問診フォームを選択',
-        ],
-      },
-      {
-        title: '問診内容を入力',
-        items: [
-          '各質問項目に回答を入力',
-          '選択式・自由記述式に対応',
-          '必須項目は全て入力',
-        ],
-        note: { type: 'tips', title: 'Tips', content: 'Web問診で事前入力された内容は自動で反映されます。' },
-      },
-      {
-        title: '入力内容を確認・保存',
-        items: [
-          '入力内容をプレビューで確認',
-          '「保存」をクリック',
-          '必要に応じて印刷',
-        ],
-      },
-    ],
-  },
 
   // OPTIONS
   import: {
