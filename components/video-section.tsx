@@ -42,48 +42,42 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
     }
   }, [])
 
-  // YouTube プレイヤー の初期化と状態変化のハンドリング
+  // YouTube プレイヤーの初期化 (初回のみ)
   useEffect(() => {
-    if (typeof window === 'undefined' || !window.YT) return
+    if (typeof window === 'undefined' || !window.YT || !window.YT.Player) return
+    if (playerInstanceRef.current || !playerRef.current) return
 
-    const initializePlayer = () => {
-      if (playerRef.current && !playerInstanceRef.current) {
-        const youtubeId = selectedVideo?.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
-        
-        if (youtubeId) {
-          playerInstanceRef.current = new window.YT.Player(playerRef.current, {
-            height: '100%',
-            width: '100%',
-            videoId: youtubeId,
-            events: {
-              onStateChange: (event: any) => {
-                // state: 0=ended, 1=playing, 2=paused, 3=buffering, 5=video cued
-                if (event.data === window.YT.PlayerState.PLAYING) {
-                  setCompleted(prev => {
-                    const next = new Set(prev)
-                    next.add(selectedIndex)
-                    return next
-                  })
-                }
-              }
+    const youtubeId = selectedVideo?.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
+    
+    if (youtubeId) {
+      playerInstanceRef.current = new window.YT.Player(playerRef.current, {
+        height: '100%',
+        width: '100%',
+        videoId: youtubeId,
+        events: {
+          onStateChange: (event: any) => {
+            // state: 0=ended, 1=playing, 2=paused, 3=buffering, 5=video cued
+            if (event.data === window.YT.PlayerState.PLAYING) {
+              setCompleted(prev => {
+                const next = new Set(prev)
+                next.add(selectedIndex)
+                return next
+              })
             }
-          })
+          }
         }
-      }
+      })
     }
+  }, [])
 
-    // YouTube API が利用可能になったら初期化
-    if (window.YT && window.YT.Player) {
-      initializePlayer()
-    } else {
-      // API がまだ利用可能でない場合は待機
-      const checkInterval = setInterval(() => {
-        if (window.YT && window.YT.Player) {
-          clearInterval(checkInterval)
-          initializePlayer()
-        }
-      }, 100)
-      return () => clearInterval(checkInterval)
+  // 動画選択が変わった時に新しい動画をロード
+  useEffect(() => {
+    if (!playerInstanceRef.current) return
+
+    const youtubeId = selectedVideo?.youtubeUrl ? getYouTubeId(selectedVideo.youtubeUrl) : null
+    
+    if (youtubeId && playerInstanceRef.current.loadVideoById) {
+      playerInstanceRef.current.loadVideoById(youtubeId)
     }
   }, [selectedIndex, selectedVideo])
 
