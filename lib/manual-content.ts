@@ -348,7 +348,7 @@ export const manualContents: Record<string, ManualContent> = {
     faqVideos: [
       {
         id: 1,
-        title: 'Q：「個人向け」と「団体向け」どちらを選べばいい？',
+        title: 'Q：「個人向け」と「団体向け」どちらを選べ��いい？',
         duration: '0:11',
         youtubeUrl: 'https://youtu.be/9CzJb9sYUj4',
         steps: [
@@ -438,7 +438,7 @@ export const manualContents: Record<string, ManualContent> = {
       {
         title: 'バック���ップを設定',
         items: [
-          '自動バックアップのスケジ���ール設定',
+          '自動バックアップのス���ジ���ール設定',
           '保存先の指定',
           '手動バックアップの実行',
         ],
@@ -476,4 +476,68 @@ export function getItemCategory(itemId: string): string {
 // Get all valid page IDs for validation
 export function getValidPageIds(): string[] {
   return Object.keys(manualContents)
+}
+
+// Search result item
+export interface SearchResult {
+  categoryId: string
+  categoryTitle: string
+  video: VideoItem
+  matchType: 'title' | 'keyword' | 'step'
+}
+
+// Search videos across all categories
+export function searchVideos(query: string): SearchResult[] {
+  if (!query.trim()) return []
+
+  const normalizedQuery = query.toLowerCase()
+  const results: SearchResult[] = []
+
+  for (const [categoryId, content] of Object.entries(manualContents)) {
+    const allVideos = [...content.videos, ...(content.faqVideos || [])]
+
+    for (const video of allVideos) {
+      let matched = false
+      let matchType: 'title' | 'keyword' | 'step' = 'title'
+
+      // Check title
+      if (video.title.toLowerCase().includes(normalizedQuery)) {
+        matched = true
+        matchType = 'title'
+      }
+
+      // Check keywords
+      if (!matched && video.keywords) {
+        for (const keyword of video.keywords) {
+          if (keyword.toLowerCase().includes(normalizedQuery)) {
+            matched = true
+            matchType = 'keyword'
+            break
+          }
+        }
+      }
+
+      // Check steps
+      if (!matched && video.steps) {
+        for (const step of video.steps) {
+          if (step.toLowerCase().includes(normalizedQuery)) {
+            matched = true
+            matchType = 'step'
+            break
+          }
+        }
+      }
+
+      if (matched) {
+        results.push({
+          categoryId,
+          categoryTitle: content.title,
+          video,
+          matchType,
+        })
+      }
+    }
+  }
+
+  return results
 }
