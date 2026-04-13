@@ -84,6 +84,7 @@ export const manualContents: Record<string, ManualContent> = {
           'トグルボタンを「受付済」に変更し「登録」',
         ],
         keywords: ['当日受付', '検査追加', '項目編集'],
+        tips: 'デフォルトで選択済み、選択可能な検査項目は、健診情報管理＜コース管理＜検査項目で設定できます。',
       },
     ],
     faqVideos: [
@@ -128,6 +129,7 @@ export const manualContents: Record<string, ManualContent> = {
           '（新規は）「新規受診者登録」から入力し「登録者を登録」をクリック',
         ],
         keywords: ['受診者検索', '編集', '新規登録'],
+        warning: '2文字以上で検索可能です。',
       },
       {
         id: 2,
@@ -141,6 +143,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「受診者を登録」をクリック',
         ],
         keywords: ['所属登録', '保険証', '紐付け'],
+        warning: '受診者属性インポートをご利用の場合でも、こちらは必要な作業となります。',
       },
     ],
     faqVideos: [
@@ -185,6 +188,7 @@ export const manualContents: Record<string, ManualContent> = {
           '詳細画面の「健診お知らせ」「質問票」「結果記入用紙」をクリックして出力',
         ],
         keywords: ['事前帳票', '質問票', '印刷'],
+        tips: '問診票は事前送付用、結果記入用紙は受診当日用。',
       },
       {
         id: 2,
@@ -386,6 +390,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「コースグループを登録」をクリック',
         ],
         keywords: ['有効化', '確定', '予約反映'],
+        tips: '新しくコースを作成した場合に、確定漏れがよくあるので、お忘れなく！',
       },
       {
         id: 5,
@@ -398,6 +403,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「契約コースを登録」をクリック',
         ],
         keywords: ['紐付け', 'コース追加', '契約コース'],
+        tips: 'この設定が、予約時の受診可能コース表示に反映されます。',
       },
       {
         id: 6,
@@ -422,6 +428,7 @@ export const manualContents: Record<string, ManualContent> = {
           '単価を入力し「検査項目を登録」をクリック',
         ],
         keywords: ['単価入力', '項目詳細', '価格編集'],
+        tips: '料金設定画面内の「検査機器」はカレンダー絞り込み時の「モダリティ」に反映箇所です。',
       },
       {
         id: 8,
@@ -435,6 +442,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「団体を登録」ボタンをクリック',
         ],
         keywords: ['団体登録', '会社名', 'マスター登録'],
+        tips: '健診の契約対象が、個人以外の場合を団体と表記しています（企業・保険組合・自治体など）。',
       },
       {
         id: 9,
@@ -472,8 +480,8 @@ export const manualContents: Record<string, ManualContent> = {
         duration: '1:02',
         youtubeUrl: 'https://youtu.be/b2AnFWTQcIA',
         steps: [
-          '左メニュー「健診情報管理」の「契約情報管理」をク���ック',
-          '対象を�������択し編集',
+          '左メニュー「健診情報管理」の「契約情報管理」をクリック',
+          '対象を選択し編集',
           '「契約情報を保存」をクリック',
         ],
         keywords: ['契約編集', '契約更新', '修正'],
@@ -596,6 +604,7 @@ export const manualContents: Record<string, ManualContent> = {
           '職種に応じた権限を割り当て「保存」します',
         ],
         keywords: ['職種区分', '権限', '医師', 'スタッフ', 'アカウント'],
+        tips: '医師→健診結果の確定/確定解除、管理者→ログインユーザー追加/パスワード設定etc',
       },
       {
         id: 2,
@@ -610,6 +619,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「変更する」をクリック',
         ],
         keywords: ['ロック解除', 'ログイン許可', 'ユーザー編集'],
+        warning: 'Daidaiログイン時のパスワードを3回間違えた場合にロックされます。',
       },
     ],
     steps: [],
