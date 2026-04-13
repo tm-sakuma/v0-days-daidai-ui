@@ -3,9 +3,9 @@ import { join } from 'path';
 
 export async function GET() {
   try {
-    // Read the PDF from the attachment
+    // Read the PDF from the read-only context
     const pdfBuffer = readFileSync(
-      join(process.cwd(), 'public', 'manua.pdf')
+      '/user_read_only_context/text_attachments/Daidai_操作マニュアル_v100-y65Ts.pdf'
     );
 
     return new Response(pdfBuffer, {

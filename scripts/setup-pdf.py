@@ -3,8 +3,7 @@ import os
 from pathlib import Path
 
 # Get the project paths
-script_dir = Path(__file__).parent
-project_root = script_dir.parent
+project_root = Path('/vercel/share/v0-project')
 public_dir = project_root / 'public'
 source_file = Path('/user_read_only_context/text_attachments/Daidai_操作マニュアル_v100-y65Ts.pdf')
 dest_file = public_dir / 'manua.pdf'
