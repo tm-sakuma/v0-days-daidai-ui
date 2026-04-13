@@ -8,13 +8,24 @@ interface ManualHeaderProps {
 }
 
 export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps) {
-  const handleDownloadManual = () => {
-    const link = document.createElement('a')
-    link.href = '/manua.pdf'
-    link.download = 'Daidai操作マニュアル.pdf'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+  const handleDownloadManual = async () => {
+    try {
+      const response = await fetch('/api/download-manual')
+      if (!response.ok) {
+        console.error('Failed to download manual')
+        return
+      }
+      const blob = await response.blob()
+      const link = document.createElement('a')
+      link.href = URL.createObjectURL(blob)
+      link.download = 'Daidai操作マニュアル.pdf'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(link.href)
+    } catch (error) {
+      console.error('Error downloading manual:', error)
+    }
   }
 
   return (
