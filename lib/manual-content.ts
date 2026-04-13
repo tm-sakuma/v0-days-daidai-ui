@@ -419,7 +419,7 @@ export const manualContents: Record<string, ManualContent> = {
       },
       {
         id: 7,
-        title: 'Q: 検査項目ごとの料金を細かく設定するには？',
+        title: 'Q: 検査項目ごとの料金を細か��設定するには？',
         duration: '0:35',
         youtubeUrl: 'https://youtu.be/AwptSQr7kZo',
         steps: [
@@ -517,6 +517,7 @@ export const manualContents: Record<string, ManualContent> = {
           'コースの「構成内容」で受診対象と必須の両方にチェックがあるか確認',
         ],
         keywords: ['標準', 'オプション', '判別基準'],
+        tips: 'コース編集時の、受診対象は「標準検査」、必須項目は初期チェックの有無です。',
       },
       {
         id: 4,
