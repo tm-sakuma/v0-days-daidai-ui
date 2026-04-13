@@ -419,7 +419,7 @@ export const manualContents: Record<string, ManualContent> = {
       },
       {
         id: 7,
-        title: 'Q: 検査項目ごとの料金を細か����設定するには？',
+        title: 'Q: 検査項目ごとの料金を細かく設定するには？',
         duration: '0:35',
         youtubeUrl: 'https://youtu.be/AwptSQr7kZo',
         steps: [
