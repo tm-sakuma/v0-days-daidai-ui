@@ -10,8 +10,8 @@ interface ManualHeaderProps {
 export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps) {
   const handleDownloadManual = () => {
     const link = document.createElement('a')
-    link.href = '/manual.pdf'
-    link.download = 'DAYS-Daidai-manual.pdf'
+    link.href = '/manua.pdf'
+    link.download = 'Daidai操作マニュアル.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
