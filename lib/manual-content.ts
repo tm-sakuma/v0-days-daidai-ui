@@ -121,7 +121,7 @@ export const manualContents: Record<string, ManualContent> = {
         id: 1,
         title: '受診者の検索・編集・登録',
         duration: '0:32',
-        youtubeUrl: 'https://youtu.be/DmixknzFn1E',
+        youtubeUrl: 'https://youtu.be/ghTktOZ0ouc',
         steps: [
           '左メニュー「受診者管理」をクリック',
           '検索欄に氏名またはIDを入力',
@@ -419,7 +419,7 @@ export const manualContents: Record<string, ManualContent> = {
       },
       {
         id: 7,
-        title: 'Q: 検査項目ごとの料金を細か��設定するには？',
+        title: 'Q: 検査項目ごとの料金を細かく設定するには？',
         duration: '0:35',
         youtubeUrl: 'https://youtu.be/AwptSQr7kZo',
         steps: [
