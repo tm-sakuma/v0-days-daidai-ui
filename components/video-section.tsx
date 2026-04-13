@@ -135,9 +135,9 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
     }
     
     // If player exists, load new video; otherwise initialize
-    if (playerInstanceRef.current && typeof playerInstanceRef.current.loadVideoById === 'function') {
+    if (playerInstanceRef.current && typeof playerInstanceRef.current.cueVideoById === 'function') {
       try {
-        playerInstanceRef.current.loadVideoById(youtubeId)
+        playerInstanceRef.current.cueVideoById(youtubeId)
       } catch (e) {
         // Player might be in bad state, reinitialize
         initializePlayer(youtubeId)
