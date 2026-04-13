@@ -128,6 +128,7 @@ export const manualContents: Record<string, ManualContent> = {
           '（新規は）「新規受診者登録」から入力し「登録者を登録」をクリック',
         ],
         keywords: ['受診者検索', '編集', '新規登録'],
+        warning: '2文字以上で検索可能です。',
       },
       {
         id: 2,
@@ -141,6 +142,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「受診者を登録」をクリック',
         ],
         keywords: ['所属登録', '保険証', '紐付け'],
+        warning: '受診者属性インポートをご利用の場合でも、こちらは必要な作業となります。',
       },
     ],
     faqVideos: [
@@ -472,7 +474,7 @@ export const manualContents: Record<string, ManualContent> = {
         duration: '1:02',
         youtubeUrl: 'https://youtu.be/b2AnFWTQcIA',
         steps: [
-          '左メニュー「健診情報管理」の「契約情報管理」をク���ック',
+          '左メニュー「健診情報管理」の「契約情報管理」をク�����ック',
           '対象を�������択し編集',
           '「契約情報を保存」をクリック',
         ],
@@ -610,6 +612,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「変更する」をクリック',
         ],
         keywords: ['ロック解除', 'ログイン許可', 'ユーザー編集'],
+        warning: 'Daidaiログイン時のパスワードを3回間違えた場合にロックされます。',
       },
     ],
     steps: [],
