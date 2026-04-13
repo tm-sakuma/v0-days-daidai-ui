@@ -472,7 +472,7 @@ export const manualContents: Record<string, ManualContent> = {
         duration: '1:02',
         youtubeUrl: 'https://youtu.be/b2AnFWTQcIA',
         steps: [
-          '左メニュー「健診情報管理」の「契約情報管理」をクリック',
+          '左メニュー「健診情報管理」の「契約情報管理」をク���ック',
           '対象を�������択し編集',
           '「契約情報を保存」をクリック',
         ],
@@ -575,7 +575,7 @@ export const manualContents: Record<string, ManualContent> = {
         id: 1,
         title: 'システム起動とログイン手順',
         duration: '0:17',
-        youtubeUrl: 'https://youtu.be/TSmF664C29I',
+        youtubeUrl: 'https://youtu.be/W_8AMYS7qbA',
         steps: [
           'デスクトップのアイコンをダブルクリック',
           'ログインIDを入力',
