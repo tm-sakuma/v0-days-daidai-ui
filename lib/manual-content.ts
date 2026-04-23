@@ -302,6 +302,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「インポートを実行」をクリックします',
         ],
         keywords: ['結果インポート', 'データインポート', '検査機関', 'ファイル追加'],
+        tips: '正常に取り込まれたデータは「結果入力画面」で確認できます。',
       },
     ],
     steps: [],
@@ -442,7 +443,7 @@ export const manualContents: Record<string, ManualContent> = {
         steps: [
           '契約詳細下部の「契約コース」で「編集」をクリック',
           '単価を入力',
-          '「契約��ースを登録」をクリック',
+          '「契約���ースを登録」をクリック',
         ],
         keywords: ['単価設定', '料金入力', '基本料金'],
       },
@@ -452,7 +453,7 @@ export const manualContents: Record<string, ManualContent> = {
         duration: '0:35',
         youtubeUrl: 'https://youtu.be/AwptSQr7kZo',
         steps: [
-          '左メニュー「健診情報管理」の「検査項��������を展開',
+          '左メニュー「健診情報管理」の「検査項����������を展開',
           '「詳細」＞「編集」をクリック',
           '単価を入力し「検査項目を登録」をクリック',
         ],
@@ -623,7 +624,7 @@ export const manualContents: Record<string, ManualContent> = {
           '左メニュー「システム設定」の「帳票設定」をクリック',
           '対象帳票を選び「保存」をクリック',
         ],
-        keywords: ['カスタマイズ', 'フォーマット', '帳票設定'],
+        keywords: ['カスタマイズ', 'フォーマット', '帳��設定'],
       },
       {
         id: 2,
