@@ -9,6 +9,7 @@ export interface VideoItem {
   keywords?: string[]
   warning?: string
   tips?: string
+  addedDate?: string // YYYY-MM-DD形式
 }
 
 export interface StepItem {
@@ -348,6 +349,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
         keywords: ['協会けんぽ', 'データ出力', 'CSVエクスポート', '生活習慣病予防健診'],
         warning: '抽出できる期間は最大1か月です。',
+        addedDate: '2025-04-01',
       },
     ],
     faqVideos: [
@@ -531,6 +533,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
         keywords: ['保険団体登録', '協会けんぽ', 'ファイル出力対象', '団体管理'],
         tips: '団体区分の絞り込み（社保/国保など）を使うと早く見つけることが可能です。',
+        addedDate: '2025-04-10',
       },
       {
         id: 13,
@@ -552,6 +555,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
         keywords: ['契約情報設定', '健診種別', '出力時受診券', '協会けんぽ契約'],
         tips: '出力時受診券の自動チェック無効は、特定健診等で必要となる機能です。',
+        addedDate: '2025-04-10',
       },
     ],
     faqVideos: [
@@ -830,11 +834,22 @@ export function getAllVideos(): VideoWithCategory[] {
   return allVideos
 }
 
-// Get recent videos (last N added)
+// Get recent videos (sorted by addedDate descending, fallback to definition order)
 export function getRecentVideos(count: number = 3): VideoWithCategory[] {
   const allVideos = getAllVideos()
-  // Return last N videos (most recently defined in the content)
-  return allVideos.slice(-count).reverse()
+  const withDate = allVideos.filter((v) => v.video.addedDate)
+  const withoutDate = allVideos.filter((v) => !v.video.addedDate)
+
+  // addedDateがあるものを新しい順にソート
+  withDate.sort((a, b) => {
+    const dateA = a.video.addedDate!
+    const dateB = b.video.addedDate!
+    return dateB.localeCompare(dateA)
+  })
+
+  // addedDateがあるものを優先し、足りない場合はdefinition orderの末尾で補完
+  const combined = [...withDate, ...withoutDate.slice(-count).reverse()]
+  return combined.slice(0, count)
 }
 
 // Get popular videos (fixed selection from different categories)
