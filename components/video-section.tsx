@@ -198,16 +198,6 @@ export function VideoSection({ selectedIndex, onSelectVideo, videos, faqVideos =
         </div>
       </div>
 
-      {/* Caution Section */}
-      {selectedVideo?.caution && (
-        <div className="flex-shrink-0 px-4 pb-3">
-          <div className="bg-[#fffbf0] border-l-4 border-[#f59e0b] rounded p-3">
-            <p className="text-[12px] font-semibold text-[#d97706] mb-1">注意</p>
-            <p className="text-[12px] text-[#92400e]">{selectedVideo.caution}</p>
-          </div>
-        </div>
-      )}
-
       {/* Video List - Scrollable */}
       <div className="flex-1 overflow-y-auto px-4 pb-4">
         <p className="text-[10px] font-semibold text-[#999999] mb-2.5 uppercase tracking-wider">動画一覧</p>

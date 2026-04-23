@@ -346,7 +346,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「エクスポートを実行」ボタンをクリックします',
         ],
         keywords: ['協会けんぽ', 'データ出力', 'CSVエクスポート', '生活習慣病予防健診'],
-        caution: '抽出できる期間は最大1か月です。',
+        warning: '抽出できる期間は最大1か月です。',
       },
     ],
     faqVideos: [
@@ -452,7 +452,7 @@ export const manualContents: Record<string, ManualContent> = {
         duration: '0:35',
         youtubeUrl: 'https://youtu.be/AwptSQr7kZo',
         steps: [
-          '左メニュー「健診情報管理」の「検査項目」を展開',
+          '左メニュー「健診情報管理」の「検査項目���を展開',
           '「詳細」＞「編集」をクリック',
           '単価を入力し「検査項目を登録」をクリック',
         ],
@@ -629,7 +629,7 @@ export const manualContents: Record<string, ManualContent> = {
         duration: '0:34',
         youtubeUrl: 'https://youtu.be/XKgNmqScFaU',
         steps: [
-          '左メニュー「システム設定」の「ユーザー情報管理」をクリック',
+          '左メニュー「システム設定」の「ユーザ���情報管理」をクリック',
           '「＋新規ユーザー登録」をクリック',
           '氏名・アカウント情報を入力',
           '「登録」をクリック',
@@ -652,7 +652,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「出力開始」をクリックします',
         ],
         keywords: ['ファイル出力', '並び替え', '文字コード', '抽出条件'],
-        caution: '抽出できる期間は最大1か月です。',
+        warning: '抽出できる期間は最大1か月です。',
       },
     ],
     faqVideos: [],
