@@ -442,7 +442,7 @@ export const manualContents: Record<string, ManualContent> = {
         steps: [
           '契約詳細下部の「契約コース」で「編集」をクリック',
           '単価を入力',
-          '「契約コースを登録」をクリック',
+          '「契約��ースを登録」をクリック',
         ],
         keywords: ['単価設定', '料金入力', '基本料金'],
       },
@@ -452,7 +452,7 @@ export const manualContents: Record<string, ManualContent> = {
         duration: '0:35',
         youtubeUrl: 'https://youtu.be/AwptSQr7kZo',
         steps: [
-          '左メニュー「健診情報管理」の「検査項目���を展開',
+          '左メニュー「健診情報管理」の「検査項目�����を展開',
           '「詳細」＞「編集」をクリック',
           '単価を入力し「検査項目を登録」をクリック',
         ],
@@ -529,6 +529,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「団体を登録」ボタンをクリックします',
         ],
         keywords: ['保険団体登録', '協会けんぽ', 'ファイル出力対象', '団体管理'],
+        tips: '団体区分の絞り込み（社保/国保など）を使うと早く見つけることが可能です。',
       },
       {
         id: 13,
@@ -629,7 +630,7 @@ export const manualContents: Record<string, ManualContent> = {
         duration: '0:34',
         youtubeUrl: 'https://youtu.be/XKgNmqScFaU',
         steps: [
-          '左メニュー「システム設定」の「ユーザ���情報管理」をクリック',
+          '左メニュー「システム設定」の「ユ���ザ���情報管理」をクリック',
           '「＋新規ユーザー登録」をクリック',
           '氏名・アカウント情報を入力',
           '「登録」をクリック',
