@@ -378,7 +378,7 @@ export const manualContents: Record<string, ManualContent> = {
           '左メニュー「健診情報管理」の「コース内容管理」をクリック',
           '「＋新規作成」をクリック',
           '名称を入力し用途を選択',
-          '「コースグル��プを登録」をクリック',
+          '「コースグループを登録」をクリック',
         ],
         keywords: ['コース作成', '枠組み', '名称入力'],
       },
@@ -395,7 +395,7 @@ export const manualContents: Record<string, ManualContent> = {
       },
       {
         id: 3,
-        title: '複製した��ースをカスタマイズする',
+        title: '複製したコースをカスタマイズする',
         duration: '0:45',
         youtubeUrl: 'https://youtu.be/j3m3QiBFD4w',
         steps: [
@@ -646,7 +646,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「編集」をクリックします',
           'ドラッグ＆ドロップで出力の順番を変更（並び替え）または無効化します',
           '「保存」をクリックします',
-          '出力データの文字コー���を選択します',
+          '出力データの文字コードを選択します',
           '抽出したい期間をカレンダーから選択します',
           '「出力開始」をクリックします',
         ],
