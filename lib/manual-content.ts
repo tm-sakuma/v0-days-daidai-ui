@@ -346,6 +346,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「エクスポートを実行」ボタンをクリックします',
         ],
         keywords: ['協会けんぽ', 'データ出力', 'CSVエクスポート', '生活習慣病予防健診'],
+        caution: '抽出できる期間は最大1か月です。',
       },
     ],
     faqVideos: [
@@ -651,6 +652,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「出力開始」をクリックします',
         ],
         keywords: ['ファイル出力', '並び替え', '文字コード', '抽出条件'],
+        caution: '抽出できる期間は最大1か月です。',
       },
     ],
     faqVideos: [],
