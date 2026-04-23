@@ -199,7 +199,15 @@ export function HomeDashboard({ searchQuery, onSearchChange, onNavigate }: HomeD
                 className="w-full px-4 py-3 text-left hover:bg-[#fafafa] transition-colors"
               >
                 <p className="text-sm text-[#333333] mb-1">{item.video.title}</p>
-                <p className="text-[10px] text-[#999999]">{item.categoryTitle}</p>
+                <div className="flex items-center gap-2 text-[10px] text-[#999999]">
+                  <span>{item.categoryTitle}</span>
+                  {item.video.addedDate && (
+                    <>
+                      <span>·</span>
+                      <span>{item.video.addedDate}</span>
+                    </>
+                  )}
+                </div>
               </button>
             ))}
           </div>
