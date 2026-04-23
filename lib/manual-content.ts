@@ -452,7 +452,7 @@ export const manualContents: Record<string, ManualContent> = {
         duration: '0:35',
         youtubeUrl: 'https://youtu.be/AwptSQr7kZo',
         steps: [
-          '左メニュー「健診情報管理」の「検査項目�����を展開',
+          '左メニュー「健診情報管理」の「検査項��������を展開',
           '「詳細」＞「編集」をクリック',
           '単価を入力し「検査項目を登録」をクリック',
         ],
@@ -550,6 +550,7 @@ export const manualContents: Record<string, ManualContent> = {
           '「契約コースを登録」をクリック（※使用するコース分繰り返す）',
         ],
         keywords: ['契約情報設定', '健診種別', '出力時受診券', '協会けんぽ契約'],
+        tips: '出力時受診券の自動チェック無効は、特定健診等で必要となる機能です。',
       },
     ],
     faqVideos: [
