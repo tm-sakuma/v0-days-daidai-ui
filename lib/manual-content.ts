@@ -292,19 +292,6 @@ export const manualContents: Record<string, ManualContent> = {
     videos: [
       {
         id: 1,
-        title: '結果インポート',
-        duration: '0:30',
-        youtubeUrl: 'https://youtu.be/nxRE43w_bw0',
-        steps: [
-          '左メニュー「データインポート」をクリックします',
-          '「機関を選択」のドロップダウンから検査機関を選択します',
-          'エリア内に検査結果ファイルをドラッグアンドドロップ、または「ファイル追加」から追加します',
-          '「インポートを実行」をクリックします',
-        ],
-        keywords: ['結果インポート', 'データインポート', '検査機関', 'ファイル追加'],
-      },
-      {
-        id: 2,
         title: '【協会けんぽ】保険団体の登録',
         duration: '0:35',
         youtubeUrl: 'https://youtu.be/_fnLR2legwE',
@@ -537,6 +524,19 @@ export const manualContents: Record<string, ManualContent> = {
       },
       {
         id: 12,
+        title: '結果インポート',
+        duration: '0:30',
+        youtubeUrl: 'https://youtu.be/nxRE43w_bw0',
+        steps: [
+          '左メニュー「データインポート」をクリックします',
+          '「機関を選択」のドロップダウンから検査機関を選択します',
+          'エリア内に検査結果ファイルをドラッグアンドドロップ、または「ファイル追加」から追加します',
+          '「インポートを実行」をクリックします',
+        ],
+        keywords: ['結果インポート', 'データインポート', '検査機関', 'ファイル追加'],
+      },
+      {
+        id: 13,
         title: '【協会けんぽ】データ出力',
         duration: '0:40',
         youtubeUrl: 'https://youtu.be/EDVmznQpus8',
