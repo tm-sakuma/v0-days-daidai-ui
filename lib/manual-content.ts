@@ -304,6 +304,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
         keywords: ['結果インポート', 'データインポート', '検査機関', 'ファイル追加'],
         tips: '正常に取り込まれたデータは「結果入力画面」で確認できます。',
+        addedDate: '2026-04-23',
       },
     ],
     steps: [],
@@ -349,7 +350,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
         keywords: ['協会けんぽ', 'データ出力', 'CSVエクスポート', '生活習慣病予防健診'],
         warning: '抽出できる期間は最大1か月です。',
-        addedDate: '2025-04-01',
+        addedDate: '2026-04-23',
       },
     ],
     faqVideos: [
@@ -399,7 +400,7 @@ export const manualContents: Record<string, ManualContent> = {
       },
       {
         id: 3,
-        title: '複製したコースをカスタマイズする',
+        title: '複製した��ースをカスタマイズする',
         duration: '0:45',
         youtubeUrl: 'https://youtu.be/j3m3QiBFD4w',
         steps: [
@@ -451,7 +452,7 @@ export const manualContents: Record<string, ManualContent> = {
       },
       {
         id: 7,
-        title: 'Q: 検査項目ごとの料金を細かく設定するには？',
+        title: 'Q: 検査項目ごとの料金を細かく設���するには？',
         duration: '0:35',
         youtubeUrl: 'https://youtu.be/AwptSQr7kZo',
         steps: [
@@ -533,7 +534,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
         keywords: ['保険団体登録', '協会けんぽ', 'ファイル出力対象', '団体管理'],
         tips: '団体区分の絞り込み（社保/国保など）を使うと早く見つけることが可能です。',
-        addedDate: '2025-04-10',
+        addedDate: '2026-04-23',
       },
       {
         id: 13,
@@ -555,7 +556,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
         keywords: ['契約情報設定', '健診種別', '出力時受診券', '協会けんぽ契約'],
         tips: '出力時受診券の自動チェック無効は、特定健診等で必要となる機能です。',
-        addedDate: '2025-04-10',
+        addedDate: '2026-04-23',
       },
     ],
     faqVideos: [
@@ -660,6 +661,7 @@ export const manualContents: Record<string, ManualContent> = {
         ],
         keywords: ['ファイル出力', '並び替え', '文字コード', '抽出条件'],
         warning: '抽出できる期間は最大1か月です。',
+        addedDate: '2026-04-23',
       },
     ],
     faqVideos: [],
