@@ -1,4 +1,4 @@
-const PDF_URL = 'https://blobs.vusercontent.net/blob/Daidai_%E6%93%8D%E4%BD%9C%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB_v100-y65Ts30cISdmsYCvmofzYj1zgUkQbn.pdf';
+const PDF_URL = 'https://blobs.vusercontent.net/blob/Daidai_%E6%93%8D%E4%BD%9C%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB_v101-ITaF4wFxKEuMqmppR3WD2sicLuDaX7.pdf';
 
 export async function GET() {
   try {
