@@ -1,6 +1,6 @@
 'use client'
 
-import { Search, Download } from 'lucide-react'
+import { Search, Download, MessageCircle } from 'lucide-react'
 
 interface ManualHeaderProps {
   searchQuery: string
@@ -53,8 +53,17 @@ export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps)
           </div>
         </div>
 
-        {/* Download Manual Button */}
-        <div className="ml-auto pl-6">
+        {/* Action Buttons */}
+        <div className="ml-auto pl-6 flex items-center gap-3">
+          <a
+            href="https://daidai-support.zendesk.com/hc/ja/requests/new"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-[#1a1a1a] text-sm font-medium rounded-lg border border-[#e8e8e8] hover:bg-[#f7f7f7] active:bg-[#eeeeee] transition-all shadow-sm hover:shadow-md"
+          >
+            <MessageCircle className="h-4 w-4" />
+            <span>お問い合わせ</span>
+          </a>
           <button
             onClick={handleDownloadManual}
             className="inline-flex items-center gap-2 px-4 py-2 bg-[#22d3ee] text-white text-sm font-medium rounded-lg hover:bg-[#06b6d4] active:bg-[#0891b2] transition-all shadow-sm hover:shadow-md"
