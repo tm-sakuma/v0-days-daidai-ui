@@ -46,7 +46,7 @@ export default function RootLayout({
         {/* Zendesk Web Widget (チャットバブル) */}
         <Script
           id="ze-snippet"
-          src={`https://static.zdassets.com/ekr/snippet.js?key=${process.env.NEXT_PUBLIC_ZENDESK_KEY}`}
+          src="https://static.zdassets.com/ekr/snippet.js?key=d64335bb-f2dd-4975-8cde-d3c9810c3797"
           strategy="afterInteractive"
         />
       </body>
