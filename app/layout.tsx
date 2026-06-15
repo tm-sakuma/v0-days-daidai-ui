@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Noto_Sans_JP } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
@@ -42,6 +43,12 @@ export default function RootLayout({
       <body className={`${notoSansJP.variable} font-sans antialiased`}>
         {children}
         <Analytics />
+        {/* Zendesk Web Widget (チャットバブル) */}
+        <Script
+          id="ze-snippet"
+          src="https://static.zdassets.com/ekr/snippet.js?key=d64335bb-f2dd-4975-8cde-d3c9810c3797"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
