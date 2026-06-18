@@ -1,7 +1,6 @@
 'use client'
 
-// 🚀 Rocket アイコンを追加インポート
-import { Search, Download, MessageCircle, Rocket } from 'lucide-react'
+import { Search, Download, MessageCircle } from 'lucide-react'
 
 interface ManualHeaderProps {
   searchQuery: string
@@ -56,17 +55,6 @@ export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps)
 
         {/* Action Buttons */}
         <div className="ml-auto pl-6 flex items-center gap-3">
-          {/* 🚀 チュートリアルスライドへのリンクボタン */}
-          <a
-            href="https://tomomi390.github.io/daidai-tutorial/slide.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#f97316] text-white text-sm font-medium rounded-lg hover:bg-[#ea580c] active:bg-[#c2410c] transition-all shadow-sm hover:shadow-md"
-          >
-            <Rocket className="h-4 w-4" />
-            <span>はじめての導入ガイド</span>
-          </a>
-
           <a
             href="https://daidai-support.zendesk.com/hc/ja/requests/new"
             target="_blank"
@@ -76,7 +64,6 @@ export function ManualHeader({ searchQuery, onSearchChange }: ManualHeaderProps)
             <MessageCircle className="h-4 w-4" />
             <span>お問い合わせ</span>
           </a>
-          
           <button
             onClick={handleDownloadManual}
             className="inline-flex items-center gap-2 px-4 py-2 bg-[#22d3ee] text-white text-sm font-medium rounded-lg hover:bg-[#06b6d4] active:bg-[#0891b2] transition-all shadow-sm hover:shadow-md"
